@@ -1,0 +1,54 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.css                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
+/*   Updated: 2016/09/14 19:23:25 by tbouder          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+.error_container
+{
+	width: 15vw;
+	height: auto;
+	margin: auto;
+	margin-top: 5vh;
+	padding: 10px;
+	border: 5px solid #FFFFFF;
+	border-radius: 10px;
+	background-color: #7F7F7F;
+	text-align: center;
+	color: #FFFFFF;
+}
+
+.error_container .content
+{
+	width: 10vw;
+	margin: auto;
+	margin-top: 1vh;
+	margin-bottom: 2vh;
+	border: 2px solid #FFFFFF;
+	border-radius: 10px;
+	padding: 10px 20px;
+	background: #066C91;
+	color: #FFFFFF;
+	font-family: 'Signika', sans-serif;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+.error_container .redirect
+{}
+
+.error_container a
+{
+	text-decoration: none;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+.error_container a:hover
+{
+	text-decoration: underline;
+}

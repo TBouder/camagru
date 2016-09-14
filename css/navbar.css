@@ -1,0 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   navbar.css                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/14 09:22:53 by tbouder           #+#    #+#             */
+/*   Updated: 2016/09/14 09:22:54 by tbouder          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+.navbar_container
+{
+	width: 100%;
+	height: 8vh;
+	background: #FFFFFF;
+	z-index: 3;
+	left: 0;
+}
+.navbar_title_container
+{
+	display: flex;
+	align-items: flex-end;
+	list-style-type: none;
+	padding-top: 2.7vh;
+	padding-left: 2vw;
+	font-family: 'Signika', sans-serif;
+	z-index: 2;
+}
+
+.navbar_title a, .navbar_link a, .navbar_link_adm a, .navbar_right a
+{
+	color: #8A9097;
+	text-decoration: none;
+}
+
+
+@media (min-width: 0px) and (max-width: 375px)
+{
+	.navbar_container		{height: 8vmax;}
+	.navbar_title_container {padding-top: 2.7vh;}
+	.navbar_title			{font-size: 1em;}
+	.navbar_link			{font-size: 0.6em; padding-left: 3vw;}
+	.navbar_right 			{font-size: 0.3em; right: 1vw; top: 2vh; position: absolute}
+}
+@media (min-width: 376px) and (max-width: 768px)
+{
+	.navbar_container		{height: 8vmax;}
+	.navbar_title_container {padding-top: 2.4vh;}
+	.navbar_title			{font-size: 1.3em;}
+	.navbar_link			{font-size: 0.7em; padding-left: 3vw;}
+	.navbar_right 			{font-size: 0.3em; right: 1vw; top: 2vh; position: absolute}
+}
+@media (min-width: 769px) and (max-width: 1024px)
+{
+	.navbar_title_container {padding-top: 2vh;}
+	.navbar_title			{font-size: 1.5em;}
+	.navbar_link			{font-size: 0.9em; padding-left: 5vw;}
+	.navbar_right 			{font-size: 0.5em; right: 1vw; top: 2vh; position: absolute}
+}
+@media (min-width: 1025px) and (max-width: 1440px)
+{
+	.navbar_title_container {padding-top: 1.8vh;}
+	.navbar_title			{font-size: 1.8em;}
+	.navbar_link			{font-size: 1.1em; padding-left: 5vw;}
+	.navbar_right 			{font-size: 0.5em; right: 1vw; top: 2vh; position: absolute}
+}
+@media (min-width: 1441px)
+{
+	.navbar_title_container {padding-top: 1.8vh;}
+	.navbar_title			{font-size: 2em;}
+	.navbar_link			{font-size: 1.3em; padding-left: 5vw;}
+	.navbar_right 			{font-size: 0.6em; right: 1vw; top: 2vh; position: absolute}
+}
