@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 11:54:51 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/14 19:33:05 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/15 00:40:48 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ session_start();
 			CREATE table IF NOT exists db_tbouder.pictures
 			(
 				id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+				link VARCHAR(2000) NOT NULL,
 				name VARCHAR(200) NOT NULL,
 				owner VARCHAR(32) NOT NULL,
+				date DATE NOT NULL,
 				nb_like INTEGER default 0
 			);
 			CREATE table IF NOT exists db_tbouder.comments
