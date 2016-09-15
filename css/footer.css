@@ -6,17 +6,17 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:22:45 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/14 22:51:09 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/15 13:22:24 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 .footer_container
 {
+	position: absolute;
 	width: 100%;
 	height: 10px;
 	padding-top: 7vh;
 	text-align: center;
-	position: absolute;
 	bottom: 5px;
 }
 

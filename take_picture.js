@@ -4,7 +4,7 @@ var streaming = false,
 	canvas       = document.querySelector('#canvas'),
 	photo        = document.querySelector('#photo'),
 	startbutton  = document.querySelector('#startbutton'),
-	width = 320,
+	width = 1500,
 	height = 0;
 
 navigator.getMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
@@ -48,9 +48,10 @@ function takepicture()
 {
 	canvas.width = width;
 	canvas.height = height;
-	canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+	canvas.getContext('2d').drawImage(video, 0, 0, 200, 200);
 	var data = canvas.toDataURL('image/png');
 	photo.setAttribute('src', data);
+	console.log(data);
 }
 
 startbutton.addEventListener('click', function(ev)

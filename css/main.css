@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:24:40 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/14 22:25:40 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/15 13:22:13 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@
 
 *					{margin: 0; box-sizing: border-box;}
 html, body			{font: 12px/1 'Montserrat', sans-serif; width: 100%;}
-body				{background-color: #333333};
+body
+{
+	background-color: #333333;
+	min-height:100%;
+	position:relative;
+};
