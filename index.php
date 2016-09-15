@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/15 13:25:01 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/15 20:10:00 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 			<video id="video"></video>
 			<div class="button_countainer"><button id="startbutton">Smile !</button></div>
 			<div class="button_countainer"><span id="alternativbutton">Or upload it !
-				<form action="php_scripts/sc_import_image.php" method="POST" enctype="multipart/form-data">
+				<form action="'.PROJECT_SCRIPTS.'sc_import_image.php" method="POST" enctype="multipart/form-data">
 					<input type="file" name="image" min="1">
 					<input type="submit" name="submit" value="Go !">
 				</form>
@@ -30,6 +30,7 @@
 			<canvas id="canvas"></canvas>
 		</div>';
 	}
+
 	function ft_split()
 	{
 		echo '
@@ -43,7 +44,7 @@
 	}
 	function ft_display_picture()
 	{
-		include ("config/database.php");
+		include (CONFIG_DIR."/database.php");
 
 		$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -66,7 +67,7 @@
 ?>
 
 <html>
-	<?php ft_head(TRUE)?>
+	<?php ft_head()?>
 	<body>
 		<?php ft_navbar() ?>
 		<?php ft_webcam() ?>

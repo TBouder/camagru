@@ -7,13 +7,16 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/14 19:49:12 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/15 20:05:18 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	session_start();
-	include ("../config/database.php");
-	include("sc_encrypt.php");
+	include_once("../includes.php");
+	include_all();
+
+	include (CONFIG_DIR."database.php");
+	include (SCRIPTS_DIR."sc_encrypt.php");
 
 	if ($_POST['submit'] == "Submit" && $_POST['user'] && $_POST['email'] && $_POST['passwd'])
 	{
@@ -26,7 +29,7 @@
 		{
 			$_SESSION['error'] = "Please enter an email";
 			$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
-			header("Location: ../error.php");
+			header("Location: ".PROJECT."error.php");
 			exit();
 		}
 		try
@@ -43,13 +46,13 @@
 				$hash_passwd = ft_encrypt_passwd($user, $passwd);
 				$DB->exec("INSERT INTO db_tbouder.users (login, passwd, email) value ('$user', '$hash_passwd', '$email');");
 				$_SESSION["loggued_on_user"] = $user;
-				header("Location: ../index.php");
+				header("Location: ".PROJECT);
 			}
 			else
 			{
 				$_SESSION['error'] = "Email or Username not available";
 				$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
-				header("Location: ../error.php");
+				header("Location: ".PROJECT."error.php");
 				exit();
 			}
 			$DB = NULL;
@@ -64,7 +67,7 @@
 	{
 		$_SESSION['error'] = "Missing datas";
 		$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
-		header("Location: ../error.php");
+		header("Location: ".PROJECT."error.php");
 		exit();
 	}
 ?>

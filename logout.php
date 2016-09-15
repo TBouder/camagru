@@ -7,11 +7,11 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/04 14:00:02 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/14 19:49:55 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/15 20:11:01 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	session_start();
 	$_SESSION['loggued_on_user'] = "";
-	header("Location: index.php");
+	header("Location: ".PROJECT);
 ?>

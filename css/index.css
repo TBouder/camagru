@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:22:53 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/15 13:19:18 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/15 18:55:39 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 	height: auto;
 	text-align: center;
 }
+
 .webcam_container #alternativbutton
 {
 	display: inline-block;
@@ -135,4 +136,18 @@
 .float_clr
 {
 	clear: both;
+}
+/******************************************************************************/
+.adm_button
+{
+	display: inline-block;
+	margin: auto;
+	margin-top: 1vh;
+	border: 2px solid #FFFFFF;
+	border-radius: 10px;
+	padding: 10px 20px;
+	background: #066C91;
+	color: #FFFFFF;
+	font-family: 'Signika', sans-serif;
+	font-size: 2vmin;
 }

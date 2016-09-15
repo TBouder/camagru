@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/14 19:37:19 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/15 20:08:34 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 	{
 		echo '
 		<div class="create_account">
-			<h3>Enregistrement</h3><br /><br />';
+			<h3>Create Account</h3><br /><br />';
 		if ($_SESSION["loggued_on_user"] == FALSE)
 		{
 			echo '
-			<form method="POST" action="php_scripts/sc_create_account.php">
+			<form method="POST" action="'.PROJECT_SCRIPTS.'sc_create_account.php">
 				Username :<br /><br /><input type="text" name="user" value="" size="30" /><br /><br />
 				Email :<br /><br /><input type="text" name="email" value="" size="30" /><br /><br />
 				Password :<br /><br /><input type="password" name="passwd" value="" size="30" /><br /><br />
@@ -33,8 +33,8 @@
 		else
 		{
 			echo '
-			Vous êtes déjà connecté<br /><br />
-			<a href="index.php" class="redirect">Retourner à l\'acceuil</a>';
+			You are already logged<br /><br />
+			<a href="'.PROJECT.'" class="redirect">Go back home</a>';
 		}
 		echo '</div>';
 	}

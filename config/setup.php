@@ -7,14 +7,15 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 11:54:51 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/15 10:50:57 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/15 19:57:30 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-session_start();
+	session_start();
+	include_once("../includes.php");
+	include_all();
 
-	include ("database.php");
-
+	include (CONFIG_DIR."database.php");
 	try
 	{
 		$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
@@ -57,5 +58,5 @@ session_start();
 		echo $e->getMessage();
 		die();
 	}
-	header("Location: ../index.php");
+	header("Location: ".PROJECT);
 ?>

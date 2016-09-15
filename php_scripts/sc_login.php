@@ -7,14 +7,17 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/14 19:49:04 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/15 20:05:14 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	session_start();
-	include ("../config/database.php");
-	include("sc_encrypt.php");
+	include_once("../includes.php");
+	include_all();
 
+	include (CONFIG_DIR."database.php");
+	include (SCRIPTS_DIR."sc_encrypt.php");
+	
 	if ($_POST['submit'] == "Submit" && $_POST['user'] && $_POST['passwd'])
 	{
 		$user = $_POST['user'];
@@ -33,13 +36,13 @@
 			if ($count === 0)
 			{
 				$_SESSION["loggued_on_user"] = $user;
-				header("Location: ../index.php");
+				header("Location: ".PROJECT);
 			}
 			else
 			{
 				$_SESSION['error'] = "Wrong Password/Username";
 				$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
-				header("Location: ../error.php");
+				header("Location: ".PROJECT."error.php");
 				exit();
 			}
 			$DB = NULL;
@@ -54,7 +57,7 @@
 	{
 		$_SESSION['error'] = "Missing datas";
 		$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
-		header("Location: ../error.php");
+		header("Location: ".PROJECT."error.php");
 		exit();
 	}
 ?>
