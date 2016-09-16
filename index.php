@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/16 10:39:43 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/16 10:46:34 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@
 		$DB = NULL;
 	}
 ?>
-
+<!-- FAIRE SECURITE POUR LES PASSWORDS ET LES NOM DE COMPTE POUR EVITER
+LES INJECTIONS ET BUGS -->
 <html>
 	<?php ft_head()?>
 	<body>
