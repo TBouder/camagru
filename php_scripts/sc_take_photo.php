@@ -7,14 +7,16 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 14:36:49 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/15 20:06:05 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/16 10:40:36 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	session_start();
 	include_once("../includes.php");
 	include_all();
-
+	if ($_SESSION["activ"] === 0)
+		header("Location: ".PROJECT);
+		
 	include (CONFIG_DIR."database.php");
 
 	if ($_POST['data'])

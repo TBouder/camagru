@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/15 20:10:00 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/16 10:39:43 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,22 @@
 			<canvas id="canvas"></canvas>
 		</div>';
 	}
-
 	function ft_split()
 	{
-		echo '
+		if ($_SESSION["user_activ"] == 0)
+		{
+			echo '
+			<div class="split_container_padding">
+				<div class="split_content"></div>
+				<a href="#goto_gallery">
+					<span class="split_text" id="goto_gallery">Come and see our <span class="hold_eye">amazing</span> gallery !</span>
+				</a>
+				<div class="split_content"></div>
+			</div>';
+		}
+		else
+		{
+			echo '
 			<div class="split_container">
 				<div class="split_content"></div>
 				<a href="#goto_gallery">
@@ -41,6 +53,7 @@
 				</a>
 				<div class="split_content"></div>
 			</div>';
+		}
 	}
 	function ft_display_picture()
 	{
@@ -70,7 +83,7 @@
 	<?php ft_head()?>
 	<body>
 		<?php ft_navbar() ?>
-		<?php ft_webcam() ?>
+		<?php $_SESSION["user_activ"] == 1 ? ft_webcam() : 0; ?>
 		<?php ft_split() ?>
 		<?php ft_display_picture() ?>
 		<?php ft_footer() ?>

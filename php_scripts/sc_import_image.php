@@ -7,13 +7,15 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 00:02:22 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/15 20:05:17 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/16 10:40:31 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	session_start();
 	include_once("../includes.php");
 	include_all();
+	if ($_SESSION["activ"] === 0)
+		header("Location: ".PROJECT);
 
 	include (CONFIG_DIR."database.php");
 	include (SCRIPTS_DIR."sc_encrypt.php");

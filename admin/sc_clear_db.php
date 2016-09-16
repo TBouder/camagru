@@ -7,13 +7,15 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 18:41:39 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/15 19:55:29 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/16 10:43:25 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	session_start();
 	include_once("../includes.php");
 	include_all();
+	if ($_SESSION["user_level"] != 2)
+		header("Location: ".PROJECT);
 
 	include (CONFIG_DIR."database.php");
 	try

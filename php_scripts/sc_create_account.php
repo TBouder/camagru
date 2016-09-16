@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/15 20:05:18 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/16 10:25:32 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@
 				$hash_passwd = ft_encrypt_passwd($user, $passwd);
 				$DB->exec("INSERT INTO db_tbouder.users (login, passwd, email) value ('$user', '$hash_passwd', '$email');");
 				$_SESSION["loggued_on_user"] = $user;
+				$_SESSION["user_level"] = 0;
+				$_SESSION["user_activ"] = 0;
 				header("Location: ".PROJECT);
 			}
 			else
