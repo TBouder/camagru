@@ -6,13 +6,14 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:22:53 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/16 10:38:48 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/17 14:30:08 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 .webcam_container
 {
 	text-align: center;
+	margin-bottom: 10vh;
 }
 
 .webcam_container #video
@@ -59,9 +60,15 @@
 	font-size: 5vmin;
 	cursor: pointer;
 }
+
+#canvas
+{
+	display: none;
+}
 /******************************************************************************/
 
-.split_container a
+.split_container a,
+.split_container_padding a
 {
 	text-decoration: none;
 }
@@ -74,11 +81,12 @@
 	text-align: center;
 	display: inline-block;
 	white-space: nowrap;
+
 }
 .split_container_padding
 {
 	position: absolute;
-	padding-top: 50px;
+	padding-top: 5vh;
 	z-index: 10;
 	width: 100%;
 	text-align: center;
@@ -114,7 +122,7 @@
 /******************************************************************************/
 .picture_container
 {
-	padding-top: 2vh;
+	padding-top: 7vh;
 	overflow: hidden;
 	margin: 10px;
 }

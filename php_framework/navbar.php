@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/16 10:30:16 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/17 11:28:24 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 			<ul class="navbar_title_container">
 				<li class="navbar_title"><a href="'.PROJECT.'index.php"><h1>Camagru</h1></a></li>
 				<li class="navbar_link"><a href="'.PROJECT.'index.php"><h1>Home</h1></a></li>
-				<li class="navbar_link"><a href="'.PROJECT.'gallery.php"><h1>Gallery</h1></a></li>';
+				<li class="navbar_link"><a href="'.PROJECT.'gallery.php?page=0"><h1>Gallery</h1></a></li>';
 		if ($_SESSION["user_level"] == 2)
 			echo '<li class="navbar_link"><a href="'.PROJECT_ADMIN.'"><h1>Admin</h1></a></li>';
 		if ($_SESSION["loggued_on_user"] == FALSE)
