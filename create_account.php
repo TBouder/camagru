@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/15 20:08:34 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/19 14:07:17 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 		{
 			echo '
 			<form method="POST" action="'.PROJECT_SCRIPTS.'sc_create_account.php">
-				Username :<br /><br /><input type="text" name="user" value="" size="30" /><br /><br />
-				Email :<br /><br /><input type="text" name="email" value="" size="30" /><br /><br />
-				Password :<br /><br /><input type="password" name="passwd" value="" size="30" /><br /><br />
+				Username :<br /><br /><input type="text" name="user" value="" /><br /><br />
+				Email :<br /><br /><input type="text" name="email" value="" /><br /><br />
+				Password :<br /><br /><input type="password" name="passwd" value="" /><br /><br />
 			   <input type="submit" name="submit" value="Submit" />
 			</form>';
 		}

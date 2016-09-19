@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/19 11:01:29 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/19 14:05:27 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,38 @@
 		$passwd = $_POST['passwd'];
 		$email = $_POST['email'];
 
+		/***********************************************************************
+		** USER CHECKS
+		***********************************************************************/
 		$user = str_replace("'", "\'", $user);
 		$user = str_replace('"', '\"', $user);
 		if (ft_check_login($user) == FALSE)
+		{
+			$_SESSION['error'] = "Login must be at least 5 characters long.";
+			$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
+			header("Location: ".PROJECT."error.php");
+			exit();
+		}
+		/***********************************************************************
+		** PASSWD CHECKS
+		***********************************************************************/
+		$passwd = str_replace("'", "\'", $passwd);
+		$passwd = str_replace('"', '\"', $passwd);
+		if (ft_check_passwd($passwd) == FALSE)
 		{
 			$_SESSION['error'] = "Poorly formatted password. Please use at least one UPPERCASE, one lowercase, 1 number and five characters.";
 			$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
 			header("Location: ".PROJECT."error.php");
 			exit();
 		}
-
-
-		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
-		if (!filter_var($email, FILTER_VALIDATE_EMAIL) === TRUE)
+		/***********************************************************************
+		** EMAIL CHECKS
+		***********************************************************************/
+		$email = str_replace("'", "\'", $email);
+		$email = str_replace('"', '\"', $email);
+		if (ft_check_email($email) == FALSE)
 		{
-			$_SESSION['error'] = "Please enter an email";
+			$_SESSION['error'] = "Poorly formatted email";
 			$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
 			header("Location: ".PROJECT."error.php");
 			exit();
