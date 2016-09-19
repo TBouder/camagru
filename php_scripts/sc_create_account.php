@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/16 10:25:32 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/19 11:01:29 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,24 @@
 
 	include (CONFIG_DIR."database.php");
 	include (SCRIPTS_DIR."sc_encrypt.php");
+	include (SCRIPTS_DIR."sc_check_infos.php");
 
 	if ($_POST['submit'] == "Submit" && $_POST['user'] && $_POST['email'] && $_POST['passwd'])
 	{
 		$user = $_POST['user'];
 		$passwd = $_POST['passwd'];
 		$email = $_POST['email'];
+
+		$user = str_replace("'", "\'", $user);
+		$user = str_replace('"', '\"', $user);
+		if (ft_check_login($user) == FALSE)
+		{
+			$_SESSION['error'] = "Poorly formatted password. Please use at least one UPPERCASE, one lowercase, 1 number and five characters.";
+			$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
+			header("Location: ".PROJECT."error.php");
+			exit();
+		}
+
 
 		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
 		if (!filter_var($email, FILTER_VALIDATE_EMAIL) === TRUE)
@@ -36,7 +48,8 @@
 		{
 			$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 			$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$request = $DB->prepare("SELECT login FROM db_tbouder.users WHERE login IN ('$user') OR email IN ('$email');");
+			$sql = "SELECT login FROM db_tbouder.users WHERE login IN ('$user') OR email IN ('$email');";
+			$request = $DB->prepare($sql);
 			$request->execute();
 			$count = $request->rowCount();
 			$request->closeCursor();

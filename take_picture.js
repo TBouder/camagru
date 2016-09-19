@@ -54,19 +54,26 @@ function ajax(img)
 	request.onload = function()
 	{
 		if (request.status >= 200 && request.status < 400)
-		{
 			var resp = request.responseText;
-			console.log(resp);
-		}
 	};
 }
 
-// function takepicture()
-// {
-// 	canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-// 	var data = canvas.toDataURL('image/png');
-// 	ajax(data);
-// }
+function ajax2()
+{
+	test        = document.getElementById('test');
+	var request = new XMLHttpRequest;
+	request.open('POST', 'php_scripts/sc_display_picture.php', true);
+	request.onload = function()
+	{
+		if (request.status >= 200 && request.status < 400)
+		{
+			var resp = request.responseText;
+			test.innerHTML = resp;
+			console.log(resp);
+		}
+	};
+	request.send();
+}
 
 function takepicture()
 {
@@ -78,6 +85,7 @@ function takepicture()
 
   // console.log(data);
   ajax(output);
+  ajax2();
   // console.log(data);
 
 }

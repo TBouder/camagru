@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/16 10:46:34 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/19 11:23:47 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,28 +55,7 @@
 			</div>';
 		}
 	}
-	function ft_display_picture()
-	{
-		include (CONFIG_DIR."/database.php");
 
-		$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-		$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$picture_db = $DB->prepare("SELECT * FROM db_tbouder.pictures;");
-		$picture_db->execute();
-
-		$all_pictures = $picture_db->fetchAll();
-		echo '<div class="picture_container">';
-		foreach ($all_pictures as $elem)
-		{
-			echo "<div class='picture_content'><div class='picture_content_2'>";
-				echo "<img src=".$elem['link']." alt=".$elem['name']." />";
-			echo "</div></div>";
-		}
-		echo '</div><div class="float_clr"></div>';
-		$picture_db->closeCursor();
-		$picture_db = NULL;
-		$DB = NULL;
-	}
 ?>
 <!-- FAIRE SECURITE POUR LES PASSWORDS ET LES NOM DE COMPTE POUR EVITER
 LES INJECTIONS ET BUGS -->
@@ -86,8 +65,11 @@ LES INJECTIONS ET BUGS -->
 		<?php ft_navbar() ?>
 		<?php $_SESSION["user_activ"] == 1 ? ft_webcam() : 0; ?>
 		<?php ft_split() ?>
-		<?php ft_display_picture() ?>
+		<div id='test'></div>
 		<?php ft_footer() ?>
 	</body>
-	<script src="./take_picture.js"></script>
+	<?php
+		if ($_SESSION["user_activ"] == 1)
+			echo '<script src="./take_picture.js"></script>';
+	?>
 </html>
