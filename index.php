@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/19 14:19:34 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/20 13:04:39 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,19 @@
 		echo '
 		<div class="webcam_container">
 			<video id="video"></video>
+			<canvas id="video_face"></canvas>
+			<div class="selectable_png">';
+			$user_dir = PROJECT."png/";
+			$scan_dir = scandir(ROOT_DIR."png/");
+
+			foreach ($scan_dir as $name)
+			{
+				if ($name === "." || $name === "..")
+					continue;
+				echo '<img src="'.$user_dir.$name.'" class="png_img" id="'.$name.'" onclick="png_select(this, \''.$name.'\')">';
+			}
+
+		echo '</div>
 			<div class="button_countainer"><button id="startbutton">Smile !</button></div>
 			<div class="button_countainer"><span id="alternativbutton">Or upload it !
 				<form action="'.PROJECT_SCRIPTS.'sc_import_image.php" method="POST" enctype="multipart/form-data">
@@ -27,7 +40,9 @@
 					<input type="submit" name="submit" value="Go !">
 				</form>
 			</span></div>
-			<canvas id="canvas"></canvas>
+			<canvas id="canvas">
+				<img id="frame" width="132" height="150">
+			</canvas>
 		</div>';
 	}
 	function ft_split()
@@ -66,8 +81,5 @@
 		<div id='pictures'></div>
 		<?php ft_footer() ?>
 	</body>
-	<?php
-		if ($_SESSION["user_activ"] == 1)
-			echo '<script src="./take_picture.js"></script>';
-	?>
+	<?php if ($_SESSION["user_activ"] == 1) echo '<script src="./take_picture.js"></script>'; ?>
 </html>

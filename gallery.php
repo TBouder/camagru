@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/16 10:46:44 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/17 14:24:31 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/20 13:15:39 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 	{
 		include (CONFIG_DIR."/database.php");
 
-		$elem_per_page = 4;
+		$elem_per_page = 8;
 
 		$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 		$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -52,13 +52,13 @@
 		echo '</div><div class="float_clr"></div>';
 
 		if($page == 0 && $left_rec > $elem_per_page)
-			echo '<a href='.$_PHP_SELF.'?page='.($page + 1).' class="gallery_next">Next '.$elem_per_page.' pictures </a>';
+			echo '<a href='.$_PHP_SELF.'?page='.($page + 1).' class="gallery_next">Next</a>';
 		else if($page != 0 && $left_rec <= $elem_per_page)
-			echo '<a href='.$_PHP_SELF.'?page='.($page - 1).' class="gallery_previous">Prev '.$elem_per_page.' pictures </a>';
+			echo '<a href='.$_PHP_SELF.'?page='.($page - 1).' class="gallery_previous">Prev</a>';
 		else if($page > 0)
 		{
-			echo '<a href='.$_PHP_SELF.'?page='.($page - 1).' class="gallery_previous">Prev '.$elem_per_page.' pictures </a>';
-			echo '<a href='.$_PHP_SELF.'?page='.($page + 1).' class="gallery_next">Next '.$elem_per_page.' pictures </a>';
+			echo '<a href='.$_PHP_SELF.'?page='.($page - 1).' class="gallery_previous">Prev</a>';
+			echo '<a href='.$_PHP_SELF.'?page='.($page + 1).' class="gallery_next">Next</a>';
 		}
 		$DB = NULL;
 	}

@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:22:53 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/17 14:30:08 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/20 12:52:02 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 	margin-bottom: 10vh;
 }
 
+.webcam_container #video_face,
 .webcam_container #video
 {
-	width: 50vmin;
+	width: 40vmin;
 	height: auto;
 	margin-top: 5vh;
 	border: 10px solid #FFFFFF;
@@ -149,7 +150,6 @@
 {
 	height: 100%;
 	widht: auto;
-	/*widht: 100%;*/
 }
 
 .float_clr
@@ -157,3 +157,17 @@
 	clear: both;
 }
 /******************************************************************************/
+
+.png_img
+{
+	width: 100;
+	-webkit-filter: grayscale(100%);
+	filter: grayscale(100%);
+}
+
+.png_select
+{
+	width: 100;
+	-webkit-filter: none;
+	filter: none;
+}
