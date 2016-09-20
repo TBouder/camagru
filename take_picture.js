@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 14:28:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/20 13:10:55 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/20 14:52:20 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@
 			canvas2.setAttribute('height', height);
 			canvas.setAttribute('width', width);
 			canvas.setAttribute('height', height);
+
+			taken_picture.setAttribute('width', width);
+			taken_picture.setAttribute('height', height);
+			png_picture.setAttribute('width', width);
+			png_picture.setAttribute('height', height);
 			streaming = true;
 		}
 	}, false);
@@ -94,7 +99,7 @@
 		};
 		request2.send();
 	}
-
+/*
 	function ajax(img, callback)
 	{
 		var request = new XMLHttpRequest;
@@ -110,18 +115,48 @@
 			}
 		};
 	}
+*/
+	function ajax(data1, data2, callback)
+	{
+		var request = new XMLHttpRequest;
+		request.open('POST', 'php_scripts/sc_take_photo.php', true);
+		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+		request.send("data1=" + data1 + "&data2=" + data2);
+		request.onload = function()
+		{
+			if (request.status >= 200 && request.status < 400)
+			{
+				var resp = request.responseText;
+				callback();
+			}
+		};
+	}
 
 /*******************************************************************************
 ** Screenshot
 *******************************************************************************/
 	function takepicture()
 	{
-	  var ctx = canvas.getContext('2d');
-	  ctx.drawImage(video, 0, 0, width, height);
-	  ctx.drawImage(frame,0,0);
-	  var data = canvas.toDataURL();
-	  var output = data.replace(/^data:image\/(png|jpg);base64,/, "");
-	  ajax(output, ajax2);
+		var taken_picture = document.querySelector('#taken_picture');
+		var png_picture = document.querySelector('#png_picture');
+		var ctx_taken_picture = taken_picture.getContext('2d');
+		var ctx_png_picture = png_picture.getContext('2d');
+
+		ctx_taken_picture.drawImage(video, 0, 0, width, height);
+		ctx_png_picture.drawImage(frame,0,0);
+		var taken_picture_data = taken_picture.toDataURL();
+		var png_picture_data = png_picture.toDataURL();
+		var output1 = taken_picture_data.replace(/^data:image\/(png|jpg);base64,/, "");
+		var output2 = png_picture_data.replace(/^data:image\/(png|jpg);base64,/, "");
+
+		ajax(output1, output2, ajax2);
+
+		// var ctx = canvas.getContext('2d');
+		// ctx.drawImage(video, 0, 0, width, height);
+		// ctx.drawImage(frame,0,0);
+		// var data = canvas.toDataURL();
+		// var output = data.replace(/^data:image\/(png|jpg);base64,/, "");
+		// ajax(output, ajax2);
 	}
 
 /*******************************************************************************
