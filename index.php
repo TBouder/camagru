@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/20 14:42:53 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/20 20:50:16 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@
 					<input type="submit" name="submit" value="Go !">
 				</form>
 			</span></div>
-			<canvas id="canvas"><img id="frame" width="132" height="150"></canvas>
-			<canvas id="taken_picture"></canvas>
-			<canvas id="png_picture"></canvas>
+			<canvas id="canvas">
+				<img id="frame" width="132" height="150">
+				<canvas id="taken_picture"></canvas>
+				<canvas id="png_picture"></canvas>
+			</canvas>
 		</div>';
 	}
 	function ft_split()

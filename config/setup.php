@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 11:54:51 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/16 10:23:41 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/21 11:20:23 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 				passwd VARCHAR(200) NOT NULL,
 				email VARCHAR(200) NOT NULL,
 				user_level INTEGER default 0,
+				unique_id VARCHAR(20) default 0,
 				activ INTEGER default 0
 			);
 			CREATE table IF NOT exists db_tbouder.pictures

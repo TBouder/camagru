@@ -6,13 +6,13 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/14 23:25:13 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/21 11:43:49 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 .error_container
 {
-	width: 15vw;
+	width: 20vw;
 	height: auto;
 	margin: auto;
 	margin-top: 5vh;
@@ -26,21 +26,19 @@
 
 .error_container .content
 {
-	width: 10vw;
+	width: 80%;
 	margin: auto;
-	margin-top: 1vh;
-	margin-bottom: 2vh;
+	margin-top: 1vmin;
+	margin-bottom: 1vmin;
 	border: 2px solid #FFFFFF;
 	border-radius: 10px;
-	padding: 10px 20px;
+	padding: 1vmin 1vmin;
 	background: #066C91;
 	color: #FFFFFF;
 	font-family: 'Signika', sans-serif;
-	font-size: 1.2em;
+	font-size: 1.5vmin;
 	cursor: pointer;
 }
-.error_container .redirect
-{}
 
 .error_container a
 {
@@ -51,4 +49,16 @@
 .error_container a:hover
 {
 	text-decoration: underline;
+}
+
+
+@media (min-width: 0px) and (max-width: 375px)
+{
+	.error_container {width: 50vmin;}
+	.error_container .content {font-size: 3vmin};
+}
+@media (min-width: 376px) and (max-width: 768px)
+{
+	.error_container {width: 50vmin;}
+	.error_container .content {font-size: 3vmin};
 }

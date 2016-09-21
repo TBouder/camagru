@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/19 14:05:27 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/21 11:21:17 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,19 @@
 			if ($count === 0)
 			{
 				$hash_passwd = ft_encrypt_passwd($user, $passwd);
-				$DB->exec("INSERT INTO db_tbouder.users (login, passwd, email) value ('$user', '$hash_passwd', '$email');");
+				$user_uniqueid = uniqid();
+				$DB->exec("INSERT INTO db_tbouder.users (login, passwd, email, unique_id) value ('$user', '$hash_passwd', '$email', '$user_uniqueid');");
 				$_SESSION["loggued_on_user"] = $user;
 				$_SESSION["user_level"] = 0;
 				$_SESSION["user_activ"] = 0;
+
+				$sujet = "Welcome to Camagru";
+				$message = "Welcome to the awesome world of Camagru !\r\n\r\n";
+				$message .= "Please click here to confirm your account : \r\n";
+				$message .= "http://localhost:8888/camagru/confirm_account.php?id=$user_uniqueid";
+				$header = "From: \"Camagru\"<tbouder.camagru@student.42.fr>".$endl;
+				mail($email, $sujet, $message, $header);
+
 				header("Location: ".PROJECT);
 			}
 			else

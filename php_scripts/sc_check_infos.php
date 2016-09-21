@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 16:20:13 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/19 14:04:59 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/21 10:45:27 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 				return (FALSE);
 			$i++;
 		}
-		if ($i >= 5)
+		if ($i >= 3)
 			return (TRUE);
 		return (FALSE);
 	}
@@ -48,7 +48,7 @@
 				return (FALSE);
 			$i++;
 		}
-		if ($min == 1 && $maj == 1 && $number == 1 && $i > 5)
+		if ($min == 1 && $maj == 1 && $number == 1 && $i >= 5)
 			return (TRUE);
 		return (FALSE);
 	}
