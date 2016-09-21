@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/21 13:01:15 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/21 20:01:47 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,10 @@
 		<?php ft_navbar() ?>
 		<?php $_SESSION["user_activ"] == 1 ? ft_webcam() : 0; ?>
 		<?php ft_split() ?>
-		<div id='pictures'></div>
+		<div id='pictures' class='picture_index'></div>
 		<?php ft_footer() ?>
 	</body>
-	<?php if ($_SESSION["user_activ"] == 1) echo '<script src="./take_picture.js"></script>'; ?>
+	<?php if ($_SESSION["user_activ"] == 1)
+		echo '<script src="./take_picture.js"></script>'; ?>
+	<script src="./gallery.js"></script>
 </html>

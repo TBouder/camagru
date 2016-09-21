@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 00:02:22 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/16 10:40:31 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/21 19:49:28 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@
 	if ($_POST['submit'] == "Go !" && file_exists($_FILES['image']['tmp_name']) && is_uploaded_file($_FILES['image']['tmp_name']))
 	{
 		$image = $_FILES['image']['tmp_name'];
+		$info = getimagesize($_FILES['image']['tmp_name']);
+		if (($info[2] !== IMAGETYPE_GIF) && ($info[2] !== IMAGETYPE_JPEG) && ($info[2] !== IMAGETYPE_PNG))
+		{
+			$_SESSION['error'] = "Please, upload a GIF, JPEG or PNG";
+			$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
+			header("Location: ".PROJECT."error.php");
+			exit();
+		}
 		$type = pathinfo($image, PATHINFO_EXTENSION);
 		$data = file_get_contents($image);
 		$img_name = hash('gost', $_FILES['image']['tmp_name'].$_FILES['image']['name']);

@@ -2,23 +2,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   footer.php                                         :+:      :+:    :+:   */
+/*   picture_list.php                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/21 19:52:04 by tbouder          ###   ########.fr       */
+/*   Created: 2016/09/16 10:46:44 by tbouder           #+#    #+#             */
+/*   Updated: 2016/09/21 19:57:17 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	session_start();
-	function ft_footer()
-	{
-		echo '
-		<div class="footer_container">
-			<div class="footer_content">
-				Copyright &#169 '.date("Y").' TBouder
-			</div>
-		</div>';
-	}
+	include_once("includes.php");
+	include_all();
 ?>
+
+<html>
+	<?php ft_head() ?>
+	<?php echo "<body onload='ajax_load(\"".$_GET['page']."\")'>";?>
+		<?php ft_navbar() ?>
+		<br><br><br><br>SORT BY ???? +++++ RESPONSIV ????
+			<div id='pictures'></div>
+		<?php ft_footer() ?>
+	</body>
+	<script src="gallery.js"></script>
+</html>

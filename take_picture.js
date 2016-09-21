@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 14:28:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/21 15:19:44 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/21 20:31:18 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,26 +71,6 @@
 			}
 		};
 	}
-	function ajax_like(image_name, callback, like)
-	{
-		var request = new XMLHttpRequest;
-		if (like == 1)
-			request.open('POST', 'php_scripts/sc_like_picture.php', true);
-		else
-			request.open('POST', 'php_scripts/sc_dislike_picture.php', true);
-		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-		request.send("image_name=" + image_name);
-		request.onload = function()
-		{
-			if (request.status >= 200 && request.status < 400)
-			{
-				var resp = request.responseText;
-				console.log(resp);
-				callback();
-			}
-		};
-	}
-
 
 /*******************************************************************************
 ** Screenshot
@@ -171,12 +151,11 @@
 		a = document.getElementById(name);
 		a.classList.add("png_select");
 	}
-
-	function ft_like(name)
+	function ft_like_index(name)
 	{
 		ajax_like(name, ajax2, 1);
 	}
-	function ft_dislike(name)
+	function ft_dislike_index(name)
 	{
 		ajax_like(name, ajax2, -1);
 	}
