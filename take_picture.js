@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 14:28:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/21 13:19:43 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/21 15:19:44 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,25 @@
 			if (request.status >= 200 && request.status < 400)
 			{
 				var resp = request.responseText;
+				callback();
+			}
+		};
+	}
+	function ajax_like(image_name, callback, like)
+	{
+		var request = new XMLHttpRequest;
+		if (like == 1)
+			request.open('POST', 'php_scripts/sc_like_picture.php', true);
+		else
+			request.open('POST', 'php_scripts/sc_dislike_picture.php', true);
+		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+		request.send("image_name=" + image_name);
+		request.onload = function()
+		{
+			if (request.status >= 200 && request.status < 400)
+			{
+				var resp = request.responseText;
+				console.log(resp);
 				callback();
 			}
 		};
@@ -153,32 +172,11 @@
 		a.classList.add("png_select");
 	}
 
-	$(document).ready(function(){
-	    if (Modernizr.touch) {
-	        // show the close overlay button
-	        $(".close-overlay").removeClass("hidden");
-	        // handle the adding of hover class when clicked
-	        $(".img").click(function(e){
-	            if (!$(this).hasClass("hover")) {
-	                $(this).addClass("hover");
-	            }
-	        });
-	        // handle the closing of the overlay
-	        $(".close-overlay").click(function(e){
-	            e.preventDefault();
-	            e.stopPropagation();
-	            if ($(this).closest(".img").hasClass("hover")) {
-	                $(this).closest(".img").removeClass("hover");
-	            }
-	        });
-	    } else {
-	        // handle the mouseenter functionality
-	        $(".img").mouseenter(function(){
-	            $(this).addClass("hover");
-	        })
-	        // handle the mouseleave functionality
-	        .mouseleave(function(){
-	            $(this).removeClass("hover");
-	        });
-	    }
-	});
+	function ft_like(name)
+	{
+		ajax_like(name, ajax2, 1);
+	}
+	function ft_dislike(name)
+	{
+		ajax_like(name, ajax2, -1);
+	}

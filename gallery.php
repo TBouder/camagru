@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/16 10:46:44 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/20 13:15:39 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/21 15:24:37 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@
 
 		$left_rec = $nb_picture - ($page * $elem_per_page);
 
-
-		$picture_db = $DB->prepare("SELECT * FROM db_tbouder.pictures LIMIT ".$elem_per_page." OFFSET ".$offset.";");
+		$picture_db = $DB->prepare("SELECT * FROM db_tbouder.pictures ORDER BY nb_like DESC, date DESC LIMIT ".$elem_per_page." OFFSET ".$offset.";");
 		$picture_db->execute();
 		$all_pictures = $picture_db->fetchAll();
 		$picture_db->closeCursor();
