@@ -1,0 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   picture_details.css                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/09/17 14:20:06 by tbouder           #+#    #+#             */
+/*   Updated: 2016/09/22 11:33:51 by tbouder          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+.picture_details_container
+{
+	text-align: center;
+	width: 80vw;
+	margin: auto;
+	padding-top: 2vh;
+}
+
+.picture_details_title
+{
+	margin-left: 5vw;
+	padding: 1vmin;
+	color: #FFFFFF;
+	font-size: 1.5em;
+}
+
+.picture_details_info
+{
+	display: table;
+	margin: auto;
+	vertical-align: middle;
+}
+
+.picture_details_img
+{
+	vertical-align: middle;
+	width: 50vmin;
+	border: 2px solid #FFFFFF;
+	border-radius: 10px;
+}
+.picture_details_like_button
+{
+	vertical-align: middle;
+	width: 10vw;
+	margin: 2vmin;
+	cursor: pointer;
+}
+
+.picture_details_username
+{
+	color: #066C91;
+	font-size: 1.6em;
+	text-align: center;
+}
+
+.picture_details_date
+{
+	padding-top: 0.5vh;
+	font-size: 0.5em;
+	text-align: center;
+}
