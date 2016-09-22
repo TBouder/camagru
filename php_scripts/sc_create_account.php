@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/21 11:21:17 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/22 10:20:16 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@
 				$sujet = "Welcome to Camagru";
 				$message = "Welcome to the awesome world of Camagru !\r\n\r\n";
 				$message .= "Please click here to confirm your account : \r\n";
-				$message .= "http://localhost:8888/camagru/confirm_account.php?id=$user_uniqueid";
+				$message .= "http://localhost:8080/camagru/php_scripts/sc_confirm_account.php?id=$user_uniqueid";
 				$header = "From: \"Camagru\"<tbouder.camagru@student.42.fr>".$endl;
 				mail($email, $sujet, $message, $header);
 

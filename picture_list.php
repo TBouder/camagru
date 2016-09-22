@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/16 10:46:44 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/21 19:57:17 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/22 11:38:04 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@
 			<div id='pictures'></div>
 		<?php ft_footer() ?>
 	</body>
-	<script src="gallery.js"></script>
+	<script src="picture_list.js"></script>
 </html>

@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:24:40 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/19 16:33:33 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/22 10:51:49 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 @import url("navbar.css");
 /* Stylesheet for Footer */
 @import url("footer.css");
-/* Stylesheet for gallery */
-@import url("gallery.css");
+/* Stylesheet for picture_list */
+@import url("picture_list.css");
+/* Stylesheet for picture_details */
+@import url("picture_details.css");
 /* Stylesheet for create_account */
 @import url("create_account.css");
 /* Stylesheet for login */

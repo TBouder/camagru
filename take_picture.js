@@ -45,7 +45,7 @@
 	{
 		pictures = document.getElementById('pictures');
 		var request2 = new XMLHttpRequest;
-		request2.open('POST', 'php_scripts/sc_display_picture.php', true);
+		request2.open('POST', 'php_scripts/sc_display_picture_index.php', true);
 		request2.onload = function()
 		{
 			if (request2.status >= 200 && request2.status < 400)
