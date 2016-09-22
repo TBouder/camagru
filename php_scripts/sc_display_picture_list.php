@@ -2,12 +2,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sc_display_picture_list.php                     :+:      :+:    :+:   */
+/*   sc_display_picture_list.php                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 18:25:12 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/21 20:32:01 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/22 12:18:12 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,39 @@
 	$picture_db->closeCursor();
 	$picture_db = NULL;
 
-	echo '<div class="picture_container">';
+	echo '<div class="picture_list_container">';
 	foreach ($all_pictures as $elem)
 	{
 		$name = $elem['name'];
 		$nb_like = $elem['nb_like'];
-		echo "<div class='picture_content'><div class='picture_content_2'>";
-		echo "<img src=".$elem['link']." alt=".$name."/>";
-		echo "<span class='text-content'>
-				<span class='like' onclick='ft_like(\"".$name."\", \"".$current_page."\")'><img src='icons/like.svg' alt='like' class='overlay_icon'/></span>";
-		echo "<span class='see'><a href='".PROJECT."picture_details.php?name=".$name."'>";
-			if ($nb_like == 0)	echo "There is no like for this picture";
-			if ($nb_like == 1)	echo "This picture has $nb_like like";
-			if ($nb_like == -1)	echo "This picture has ".-$nb_like." dislike";
-			if ($nb_like < -1)	echo "This picture has ".-$nb_like." dislikes";
-			if ($nb_like > 1)	echo "This picture has $nb_like likes";
-		echo "</a></span>";
+		echo "<div class='picture_list_content'>";
+			echo "<div class='picture_list_content_2'>";
+				echo "<img src=".$elem['link']." alt=".$name."/>";
+				echo "<span class='picture_list_text_content'>";
 
-		echo "<span class='dislike' onclick='ft_dislike(\"".$name."\", \"".$current_page."\")'><img src='icons/dislike.svg' alt='dislike' class='overlay_icon'/></span>
-			</span>";
-		echo "</div></div>";
+					echo "<span class='like' onclick='ft_like(\"".$name."\", \"".$current_page."\")'>";
+						echo "<img src='icons/like.svg' alt='like' class='picture_list_overlay_icon'/>";
+					echo "</span>";
+
+					echo "<span class='see'>";
+						echo "<a href='".PROJECT."picture_details.php?name=".$name."'>";
+							if ($nb_like == 0)	echo "There is no like for this picture";
+							if ($nb_like == 1)	echo "This picture has $nb_like like";
+							if ($nb_like == -1)	echo "This picture has ".-$nb_like." dislike";
+							if ($nb_like < -1)	echo "This picture has ".-$nb_like." dislikes";
+							if ($nb_like > 1)	echo "This picture has $nb_like likes";
+						echo "</a>";
+					echo "</span>";
+
+					echo "<span class='dislike' onclick='ft_dislike(\"".$name."\", \"".$current_page."\")'>";
+						echo "<img src='icons/dislike.svg' alt='dislike' class='picture_list_overlay_icon'/>";
+					echo "</span>";
+
+				echo "</span>";
+			echo "</div>";
+		echo "</div>";
 	}
-	echo '</div><div class="float_clr"></div>';
+	echo '</div><div class="picture_list_float_clr"></div>';
 
 	if ($page == 0 && $left_rec > $elem_per_page)
 		echo '<a href='.$_PHP_SELF.'?page='.($page + 1).' class="gallery_next">Next</a>';
