@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 18:25:12 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/22 11:45:39 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/24 11:42:51 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@
 
 				echo "<div class='picture_details_title'>";
 					if ($picture['nb_like'] == 0) echo "There is no like for it !";
-					if ($picture['nb_like'] == 1) echo "There is ".$picture['nb_like']." awesome likes for it !";
-					if ($picture['nb_like'] == -1) echo "There is ".-$picture['nb_like']." (awesome ?) dislikes for it !";
-					if ($picture['nb_like'] > 1) echo "There is ".$picture['nb_like']." awesome likes for it !";
-					if ($picture['nb_like'] < -1) echo "There is ".-$picture['nb_like']." (awesome ?) dislikes for it !";
+					if ($picture['nb_like'] == 1) echo "There is ".$picture['nb_like']." <span class='picture_details_hightlight'>awesome</span> likes for it !";
+					if ($picture['nb_like'] == -1) echo "There is ".-$picture['nb_like']." (<span class='picture_details_hightlight'>awesome</span> ?) dislikes for it !";
+					if ($picture['nb_like'] > 1) echo "There is ".$picture['nb_like']." <span class='picture_details_hightlight'>awesome</span> likes for it !";
+					if ($picture['nb_like'] < -1) echo "There is ".-$picture['nb_like']." (<span class='picture_details_hightlight'>awesome</span> ?) dislikes for it !";
 				echo "</div>";
 			echo "</div>";
 

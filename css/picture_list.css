@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 14:20:06 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/22 12:13:38 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/24 11:50:57 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,49 +86,41 @@
 	left: 0;
 	top: 0;
 	color: #FFFFFF;
-	display: table;
-	width: 100%;
-	height: 100%;
 	opacity: 0;
 }
 
 .picture_list_text_content .like
 {
-	display: table-cell;
 	background: rgba(255, 255, 255, 0.5);
-	width: 25%;
-	text-align: center;
-	vertical-align: middle;
+	float: left;
 	cursor: pointer;
+	width: 25%;
 }
 
 .picture_list_text_content .dislike
 {
-	display: table-cell;
 	background: rgba(255, 255, 255, 0.5);
-	width: 25%;
-	text-align: center;
-	vertical-align: middle;
+	float: right;
 	cursor: pointer;
+	width: 25%;
 }
 
 .picture_list_text_content .see
 {
-	display: table-cell;
+	float: left;
 	background: rgba(0, 0, 0, 0.5);
-	text-align: center;
-	vertical-align: middle;
-	height: 100%;
-	width: 100%;
+	width: 50%;
+	padding-bottom: 38%;
+	padding-top: 38%;
+	cursor: pointer;
 }
 
-.see a
+.see_link
 {
 	display: block;
 	text-decoration: none;
 	color: #FFFFFF;
-	margin-top: 100%;
-	height: 100%;
+	/*height: 100%;*/
 }
 
 .picture_list_content_2:hover .picture_list_text_content
@@ -138,26 +130,10 @@
 
 .picture_list_overlay_icon
 {
-	width: 7vmin;
-	height: 100%;
-	padding-left: 1vw;
-	padding-right: 1vw;
-
+	width: 40%;
 }
 
 @media (min-width: 0px) and (max-width: 768px)
 {
 	.picture_list_content {width: 50%; padding-bottom: 20%; padding-top: 20%;}
-}
-@media (min-width: 376px) and (max-width: 768px)
-{
-}
-@media (min-width: 769px) and (max-width: 1024px)
-{
-}
-@media (min-width: 1025px) and (max-width: 1440px)
-{
-}
-@media (min-width: 1441px)
-{
 }

@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:22:53 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/22 10:51:25 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/22 14:16:04 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,13 @@
 #canvas
 {
 	display: none;
+}
+
+
+@media (min-width: 0px) and (max-width: 768px)
+{
+	.webcam_container #video { width: 80vmin;}
+	.webcam_container #video_face { display: none;}
 }
 /******************************************************************************/
 
@@ -222,17 +229,34 @@
 }
 
 /******************************************************************************/
+.selectable_png
+{
+	width: 90%;
+	margin: auto;
+}
 
 .png_img
 {
-	width: 100;
+	width: 100px;
+	padding: 2vmin;
 	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%);
 }
 
 .png_select
 {
-	width: 100;
+	width: 100px;
 	-webkit-filter: none;
 	filter: none;
+}
+
+@media (min-width: 0px) and (max-width: 375px)
+{
+	.png_img { width: 40px;}
+	.png_select { width: 40px;}
+}
+@media (min-width: 376px) and (max-width: 768px)
+{
+	.png_img { width: 50px;}
+	.png_select { width: 50px;}
 }
