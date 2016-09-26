@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 18:25:12 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 12:46:39 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/26 17:28:59 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@
 				echo "</div>";
 				if ($picture['owner'] == $_SESSION['loggued_on_user'])
 					echo "<div class='picture_details_button' onclick='ft_ajax_delete_picture(\"".$img_name."\")'>Delete this picture</div>";
+					echo "<form method='POST' action='".PROJECT_SCRIPTS."sc_add_comment.php'>";
+						echo "<input type='hidden' name='image_name' value='".$img_name."'>";
+						echo "<input type='hidden' name='owner' value='".$picture['owner']."'>";
+						echo "<textarea rows='4' cols='40' maxlength='130' wrap='hard' name='comment'></textarea>";
+						echo "<input type='submit' name='submit' value='Submit' class='login_button' />";
+					echo "</form>";
 			echo "</div>";
 
 		}

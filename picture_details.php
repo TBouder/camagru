@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 19:50:11 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/22 11:48:43 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/26 15:34:44 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 	<?php echo "<body onload='ajax_load(\"".$_GET['name']."\")'>";?>
 		<?php ft_navbar() ?>
 		<div id='pictures'></div>
+		<?php ft_comment() ?>
 		<?php ft_footer() ?>
 	</body>
 	<script src="picture_details.js"></script>

@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 14:20:06 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 12:25:15 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/26 17:10:52 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,40 @@
 	font-family: 'Signika', sans-serif;
 	font-size: 1.2vmin;
 	cursor: pointer;
+}
+
+.comment_section
+{
+	margin: auto;
+	text-align: center;
+	width: 50%;
+	padding-top: 2vh;
+	overflow-wrap: break-word;
+}
+
+.comment_content
+{
+	border: solid 1px #FFFFFF;
+	border-radius: 10px;
+	padding: 1vmin;
+	background-color: #7F7F7F;
+	margin-bottom: 2vmin;
+}
+
+.comment_section_poster
+{
+	color: #FFFFFF;
+	font-size: 1.2em;
+	padding-bottom: 1vmin;
+}
+
+.comment_highlight
+{
+	color: #066C91;
+}
+
+.comment_comment
+{
+	color: #FFFFFF;
+	font-size: 1.1em;
 }

@@ -2,42 +2,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sc_delete_picture.php                              :+:      :+:    :+:   */
+/*   picture_details.php                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/26 12:17:13 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 17:22:07 by tbouder          ###   ########.fr       */
+/*   Created: 2016/09/26 15:35:14 by tbouder           #+#    #+#             */
+/*   Updated: 2016/09/26 17:19:57 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	session_start();
-	include_once("../includes.php");
-	include_all();
 
-	include (CONFIG_DIR."database.php");
-
-	if ($_POST['picture_name'])
+	function ft_comment()
 	{
+		include (CONFIG_DIR."database.php");
+		$image_name = $_GET['name'];
 		try
 		{
-			$name = $_POST['picture_name'];
-			$user = $_SESSION['loggued_on_user'];
 			$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 			$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			/*DELETE IMAGE*/
-			$sql = "DELETE FROM db_tbouder.pictures WHERE name='".$name."' AND owner='".$user."'";
+			$sql = "SELECT * FROM db_tbouder.comments WHERE image_name='".$image_name."';";
 			$request = $DB->prepare($sql);
 			$request->execute();
+			$comments = $request->fetchAll();
+			$count = $request->rowCount();
 			$request->closeCursor();
 			$request = NULL;
-			/*DELETE COMMENTS*/
-			$sql = "DELETE FROM db_tbouder.comments WHERE image_name='".$name."' AND owner='".$user."'";
-			$request = $DB->prepare($sql);
-			$request->execute();
-			$request->closeCursor();
-			$request = NULL;
-
+			if ($count !== 0)
+			{
+				echo "<div class='comment_section'>";
+				foreach ($comments as $key => $value)
+				{
+					$comment = $value['comment'];
+					echo "<div class='comment_content'>";
+						echo "<div class='comment_section_poster'>";
+							echo "Comment by <span class='comment_highlight'>".$value['poster']."</span>";
+						echo "</div>";
+						echo "<div class='comment_comment'>";
+							echo "<xmp> ".$comment." </xmp>";
+						echo "</div>";
+					echo "</div>";
+				}
+				echo "</div>";
+			}
 			$DB = NULL;
 		}
 		catch (Exception $e)

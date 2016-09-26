@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 13:05:09 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/26 14:53:24 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,38 @@
 			<a href="index.php" class="redirect">Go back home</a>';
 		}
 		echo '</div>';
+	}
+
+	function ft_new_passwd_form()
+	{
+		include (CONFIG_DIR."database.php");
+		$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "SELECT * FROM db_tbouder.users WHERE unique_id IN ('".$_GET['id']."');";
+		$request = $DB->prepare($sql);
+		$request->execute();
+		$users = $request->fetchAll()[0];
+		$count = $request->rowCount();
+		$request->closeCursor();
+		$request = NULL;
+
+		echo '
+		<div class="login">
+			<h3>Reset password</h3><br /><br />';
+		if ($_SESSION["loggued_on_user"] == FALSE)
+		{
+			echo "<form method='POST' action='".PROJECT_SCRIPTS."sc_edit_account.php'>";
+				echo "Username :<br /><br /><input type='text' name='user' value='".$users['login']."' readonly/><br /><br />";
+				echo "Email :<br /><br /><input type='text' name='email' value='".$users['email']."' readonly/><br /><br />";
+				echo "Password :<br /><br /><input type='password' name='passwd' value='' /><br /><br />";
+				echo "<input type='submit' name='submit' value='Submit' class='login_button' />";
+			echo "</form>";
+		}
+		else
+		{
+			echo "You are already logged<br /><br />";
+			echo "<a href='index.php' class='redirect'>Go back home</a>";
+		}
+		echo "</div>";
 	}
 ?>
