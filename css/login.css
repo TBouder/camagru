@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:24:22 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/19 14:18:56 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/26 13:03:37 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@
 	font-family: 'Signika', sans-serif;
 	font-size: 1.5vmin;
 	cursor: pointer;
+}
+.login .reset_passwd
+{
+	padding-top: 2vmin;
+	padding-bottom: 1vmin;
+}
+
+.login .reset_passwd a
+{
+	font-family: 'Signika', sans-serif;
+	font-size: 1vmin;
+	text-decoration: none;
+	color: #FFFFFF;
 }
 
 .login .redirect

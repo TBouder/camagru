@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 18:07:23 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/22 11:46:53 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/26 12:39:40 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,23 @@ function ft_like(name)
 function ft_dislike(name)
 {
 	ajax_like(name, ajax_load, -1);
+}
+
+/******************************************************************************/
+
+function ft_ajax_delete_picture(name)
+{
+	var request = new XMLHttpRequest;
+	request.open('POST', 'php_scripts/sc_delete_picture.php', true);
+	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+	request.send("picture_name=" + name);
+	request.onload = function()
+	{
+		if (request.status >= 200 && request.status < 400)
+		{
+			var resp = request.responseText;
+			console.log(resp);
+			window.location.replace("/camagru");
+		}
+	};
 }
