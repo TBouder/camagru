@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 14:28:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/21 20:31:18 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 00:21:06 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 	var canvas = document.querySelector('#canvas'); // The saved file
 	var canvas2 = document.querySelector('#video_face'); // The preview stream
 	var startbutton = document.querySelector('#startbutton');
+	var import_button = document.querySelector('#import_button');
 	var width = 600;
 	var height = 455;
 

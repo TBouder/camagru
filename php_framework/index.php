@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/22 10:24:15 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 00:29:36 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,23 @@
 				echo '<img src="'.$user_dir.$name.'" class="png_img" id="'.$name.'" onclick="png_select(this, \''.$name.'\')">';
 			}
 
-		echo '</div>
-			<div class="button_countainer"><button id="startbutton">Smile !</button></div>
-			<div class="button_countainer"><span id="alternativbutton">Or upload it !
-				<form action="'.PROJECT_SCRIPTS.'sc_import_image.php" method="POST" enctype="multipart/form-data">
-					<input type="file" name="image" min="1">
-					<input type="submit" name="submit" value="Go !">
-				</form>
-			</span></div>
-			<canvas id="canvas">
-				<img id="frame" width="132" height="150">
-				<canvas id="taken_picture"></canvas>
-				<canvas id="png_picture"></canvas>
-			</canvas>
-		</div>';
+		echo "</div>";
+			echo "<div class='button_countainer'><button id='startbutton'>Smile !</button></div>";
+			echo "<div class='button_countainer'>";
+				echo "<span id='alternativbutton'>Or upload it !";
+					// echo "<form action='".PROJECT_SCRIPTS."sc_import_image.php' method='POST' enctype='multipart/form-data'>";
+					echo "<form method='POST' enctype='multipart/form-data' id='import' onchange='previewFile()'>";
+						echo "<input type='file' name='image' min='1' id='import_image'>";
+						echo "<input type='submit' name='submit' value='Go !' id='import_button'>";
+					echo "</form>";
+				echo "</span>";
+			echo "</div>";
+			echo "<canvas id='canvas'>";
+				echo "<img id='frame' width='132' height='150'>";
+				echo "<canvas id='taken_picture'></canvas>";
+				echo "<canvas id='png_picture'></canvas>";
+			echo "</canvas>";
+		echo "</div>";
 	}
 	function ft_index_split()
 	{

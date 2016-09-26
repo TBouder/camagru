@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 15:35:14 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 17:19:57 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/26 19:33:54 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 		{
 			$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 			$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$sql = "SELECT * FROM db_tbouder.comments WHERE image_name='".$image_name."';";
+			$sql = "SELECT * FROM db_tbouder.comments WHERE image_name='".$image_name."' ORDER BY date DESC;";
 			$request = $DB->prepare($sql);
 			$request->execute();
 			$comments = $request->fetchAll();

@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/22 11:51:07 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 00:33:04 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,28 @@
 ?>
 <html>
 	<?php ft_head()?>
+	<script type="text/javascript">
+
+	function previewFile()
+	{
+	var a = document.getElementById("pictures");
+	  var preview = document.createElement("img");
+	  var file    = document.querySelector('input[type=file]').files[0];
+	  var reader  = new FileReader();
+
+	  reader.addEventListener("load", function ()
+	  {
+		  preview.src = reader.result;
+		  a.appendChild(preview);
+	  }, false);
+
+	  if (file)
+	  {
+	    reader.readAsDataURL(file);
+	  }
+	}
+
+	</script>
 	<body onload="ajax2()">
 		<?php ft_navbar() ?>
 		<?php $_SESSION["user_activ"] == 1 ? ft_index_webcam() : 0; ?>

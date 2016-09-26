@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 15:53:39 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 17:20:06 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/26 19:20:16 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@
 		$image_name = $_POST['image_name'];
 		$owner = $_POST['owner'];
 		$comment = $_POST['comment'];
+		$date = date("Y-m-d H:i:s");
 		$comment = str_replace("'", "\'", $comment);
 		$comment = str_replace('"', '\"', $comment);
 		try
 		{
 			$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 			$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$sql = "INSERT INTO db_tbouder.comments (owner, poster, image_name, comment) value ('$owner', '$user', '$image_name', '$comment');";
+			$sql = "INSERT INTO db_tbouder.comments (date, owner, poster, image_name, comment) value ('$date', '$owner', '$user', '$image_name', '$comment');";
 			$request = $DB->prepare($sql);
 			$request->execute();
 			$request->closeCursor();
@@ -47,7 +48,7 @@
 				$message .= "Follow the link to see it : http://localhost:8080/camagru/picture_details.php?name=".$image_name." \r\n";
 				$header = "From: \"Camagru\"<tbouder.camagru@student.42.fr>".$endl;
 				mail($email, $sujet, $message, $header);
-				header("Location: http://localhost:8080/camagru/picture_details.php?name=".$image_name);
+				header("Location: ".PROJECT."picture_details.php?name=".$image_name);
 			$DB = NULL;
 		}
 		catch (Exception $e)

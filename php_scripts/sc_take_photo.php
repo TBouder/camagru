@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 14:36:49 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/20 20:37:54 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/26 19:45:44 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 	if ($_SESSION["activ"] === 0)
 		header("Location: ".PROJECT);
 
-		header( "Content-type: image/png" );
 	include (CONFIG_DIR."database.php");
 
 	if ($_POST['data1'] && $_POST['data2'])
