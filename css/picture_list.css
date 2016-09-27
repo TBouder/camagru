@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 14:20:06 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/24 11:50:57 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 15:23:19 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@
 	top: 0;
 	color: #FFFFFF;
 	opacity: 0;
+	height: 100%;
 }
 
 .picture_list_text_content .like
@@ -120,7 +121,6 @@
 	display: block;
 	text-decoration: none;
 	color: #FFFFFF;
-	/*height: 100%;*/
 }
 
 .picture_list_content_2:hover .picture_list_text_content
@@ -136,4 +136,35 @@
 @media (min-width: 0px) and (max-width: 768px)
 {
 	.picture_list_content {width: 50%; padding-bottom: 20%; padding-top: 20%;}
+}
+
+.picture_list_order
+{
+	width: 100%;
+	margin: auto;
+	text-align: center;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+
+	color: #FFFFFF;
+	font-family: 'Signika', sans-serif;
+	font-size: 2vmin;
+}
+
+.picture_list_order select
+{
+	background: none;
+	border: none;
+	border-bottom: 2px dashed #066C91;
+	margin-left: 1vw;
+	color: #FFFFFF;
+	font-family: 'Signika', sans-serif;
+	font-size: 2vmin;
+}
+
+.picture_list_order select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
 }

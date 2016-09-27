@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 14:28:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 00:21:06 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 14:54:50 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,23 @@
 ** Start stream
 *******************************************************************************/
 	navigator.getMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia
-		|| navigator.mozGetUserMedia || navigator.msGetUserMedia);
+		|| navigator.mediaDevices.getUserMedia || navigator.msGetUserMedia);
 
+if (typeof InstallTrigger !== 'undefined')
+{
+	var p = navigator.mediaDevices.getUserMedia({ audio: false, video: true });
+	p.then(function(stream)
+	{
+		video.src = window.URL.createObjectURL(stream);
+		video.onloadedmetadata = function(e)
+		{
+			video.play();
+		};
+	});
+	p.catch(function(err) { console.log(err.name); }); // always check for errors at the end.
+}
+else
+{
 	if (navigator.getMedia)
 	{
 		navigator.getMedia( { video: true, audio: false },
@@ -38,6 +53,7 @@
 	    },
 		function(err) { console.log("The following error occured: " + err); });
 	}
+}
 
 /*******************************************************************************
 ** Ajax functions
@@ -115,10 +131,16 @@
 
 	video.addEventListener('timeupdate', function(ev)
 	{
-		var img = document.querySelector('#frame');
-		var ctx2 = canvas2.getContext('2d');
-		ctx2.drawImage(video, 0, 0, width, height);
-		ctx2.drawImage(img, 0, 0);
+		if (document.querySelector('#uploaded_picture').innerHTML === "")
+		{
+			var ctx2 = canvas2.getContext('2d');
+			ctx2.drawImage(video, 0, 0, width, height);
+			if (document.querySelector('#frame').src !== "")
+			{
+				var img = document.querySelector('#frame');
+				ctx2.drawImage(img, 0, 0);
+			}
+		}
 	}, false);
 
 	startbutton.addEventListener('click', function(ev)

@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 00:29:36 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 15:10:53 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@
 			echo "<div class='button_countainer'><button id='startbutton'>Smile !</button></div>";
 			echo "<div class='button_countainer'>";
 				echo "<span id='alternativbutton'>Or upload it !";
-					// echo "<form action='".PROJECT_SCRIPTS."sc_import_image.php' method='POST' enctype='multipart/form-data'>";
-					echo "<form method='POST' enctype='multipart/form-data' id='import' onchange='previewFile()'>";
+					echo "<form method='POST' enctype='multipart/form-data' id='import' onsubmit='ft_send_file()' onchange='ft_preview_file()'>";
 						echo "<input type='file' name='image' min='1' id='import_image'>";
 						echo "<input type='submit' name='submit' value='Go !' id='import_button'>";
 					echo "</form>";
@@ -43,6 +42,7 @@
 			echo "</div>";
 			echo "<canvas id='canvas'>";
 				echo "<img id='frame' width='132' height='150'>";
+				echo "<canvas id='uploaded_picture'></canvas>";
 				echo "<canvas id='taken_picture'></canvas>";
 				echo "<canvas id='png_picture'></canvas>";
 			echo "</canvas>";

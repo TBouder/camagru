@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 14:54:37 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 13:57:23 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,6 @@
 				$request->execute();
 				$request->closeCursor();
 				$request = NULL;
-
-				$_SESSION["loggued_on_user"] = $user;
-				$_SESSION["user_level"] = 0;
-				$_SESSION["user_activ"] = 0;
 
 				$sujet = "Camagru - New password";
 				$message .= "Your new password is : $passwd\r\n";
