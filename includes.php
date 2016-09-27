@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/15 19:59:01 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 23:53:16 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 				continue;
 			include_once(ROOT_DIR."php_framework/$file");
 		}
-		// include_once("./php_scripts/sc_display_list.php");
+		include_once(ROOT_DIR."php_scripts/sc_tools.php");
 	}
 
 ?>

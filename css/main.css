@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:24:40 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/22 10:51:49 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 23:17:03 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,25 @@ body
 	background-color: #333333;
 	min-height:100%;
 	position:relative;
-};
+}
+
+.credits_container
+{
+	width: 30vw;
+	height: auto;
+	margin: auto;
+	margin-top: 5vh;
+	padding: 10px;
+	border: 5px solid #FFFFFF;
+	border-radius: 10px;
+	background-color: #066C91;
+	text-align: center;
+	color: #FFFFFF;
+}
+.credits_title
+{
+	font-family: 'Signika', sans-serif;
+	font-size: 2vmin;
+	color: #FFFFFF;
+	padding-bottom: 1vh;
+}

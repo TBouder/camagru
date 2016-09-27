@@ -7,16 +7,13 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 19:57:37 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 00:15:09 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	session_start();
 	include_once("../includes.php");
 	include_all();
-
-	include (CONFIG_DIR."database.php");
-	include (SCRIPTS_DIR."sc_tools.php");
 
 	if ($_POST['submit'] == "Submit" && $_POST['user'] && $_POST['email'] && $_POST['passwd'])
 	{
@@ -46,38 +43,21 @@
 		***********************************************************************/
 		$email = str_replace("'", "\'", $email);
 		$email = str_replace('"', '\"', $email);
-		try
-		{
-			$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-			$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$sql = "SELECT login FROM db_tbouder.users WHERE login IN ('$user') AND email IN ('$email');";
-			$request = $DB->prepare($sql);
-			$request->execute();
-			$count = $request->rowCount();
-			$request->closeCursor();
-			$request = NULL;
-			if ($count === 1)
-			{
-				$hash_passwd = ft_encrypt_passwd($user, $passwd);
-				$user_uniqueid = uniqid();
-				$sql = "UPDATE db_tbouder.users SET passwd='".$hash_passwd."', unique_id='".$user_uniqueid."' WHERE login='".$user."';";
-				$request = $DB->prepare($sql);
-				$request->execute();
-				$request->closeCursor();
-				$request = NULL;
+		$sql = "SELECT login FROM db_tbouder.users WHERE login IN ('$user') AND email IN ('$email');";
+		$count = ft_exec_sql("rowCount", $sql);
 
-				$sujet = "Camagru - New password";
-				$message .= "Your new password is : $passwd\r\n";
-				$header = "From: \"Camagru\"<tbouder.camagru@student.42.fr>".$endl;
-				mail($email, $sujet, $message, $header);
-				header("Location: ".PROJECT);
-			}
-			$DB = NULL;
-		}
-		catch (Exception $e)
+		if ($count === 1)
 		{
-			echo $e->getMessage();
-			die();
+			$hash_passwd = ft_encrypt_passwd($user, $passwd);
+			$user_uniqueid = uniqid();
+			$sql = "UPDATE db_tbouder.users SET passwd='".$hash_passwd."', unique_id='".$user_uniqueid."' WHERE login='".$user."';";
+			ft_exec_sql(FALSE, $sql);
+
+			$sujet = "Camagru - New password";
+			$message .= "Your new password is : $passwd\r\n";
+			$header = "From: \"Camagru\"<tbouder.camagru@student.42.fr>".$endl;
+			mail($email, $sujet, $message, $header);
+			header("Location: ".PROJECT);
 		}
 	}
 	else

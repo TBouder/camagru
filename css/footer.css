@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:22:45 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 14:11:49 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 23:21:36 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,24 @@
 	z-index: -10;
 }
 
-.footer_content
+.footer_content,
+.footer_content a
 {
-	padding-top: 7vh;
+	margin-top: 7vh;
 	color: #444444;
 	font-family: 'Signika', sans-serif;
 	font-size: 1em;
 }
+.footer_content a
+{
+	text-decoration: none;
+	cursor: pointer;
+}
+.footer_content a:hover
+{
+	color: #8A9097;
+}
+
 .footer_admin
 {
 	font-family: 'Signika', sans-serif;

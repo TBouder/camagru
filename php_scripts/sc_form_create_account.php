@@ -7,16 +7,13 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 19:57:21 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 00:06:30 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	session_start();
 	include_once("../includes.php");
 	include_all();
-
-	include (CONFIG_DIR."database.php");
-	include (SCRIPTS_DIR."sc_tools.php");
 
 	if ($_POST['submit'] == "Submit" && $_POST['user'] && $_POST['email'] && $_POST['passwd'])
 	{
@@ -60,46 +57,33 @@
 			header("Location: ".PROJECT."error.php");
 			exit();
 		}
-		try
-		{
-			$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-			$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$sql = "SELECT login FROM db_tbouder.users WHERE login IN ('$user') OR email IN ('$email');";
-			$request = $DB->prepare($sql);
-			$request->execute();
-			$count = $request->rowCount();
-			$request->closeCursor();
-			$request = NULL;
-			if ($count === 0)
-			{
-				$hash_passwd = ft_encrypt_passwd($user, $passwd);
-				$user_uniqueid = uniqid();
-				$DB->exec("INSERT INTO db_tbouder.users (login, passwd, email, unique_id) value ('$user', '$hash_passwd', '$email', '$user_uniqueid');");
-				$_SESSION["loggued_on_user"] = $user;
-				$_SESSION["user_level"] = 0;
-				$_SESSION["user_activ"] = 0;
 
-				$sujet = "Welcome to Camagru";
-				$message = "Welcome to the awesome world of Camagru !\r\n\r\n";
-				$message .= "Please click here to confirm your account : \r\n";
-				$message .= "http://localhost:8080/camagru/php_scripts/sc_mail_confirm_account.php?id=$user_uniqueid";
-				$header = "From: \"Camagru\"<tbouder.camagru@student.42.fr>".$endl;
-				mail($email, $sujet, $message, $header);
-				header("Location: ".PROJECT);
-			}
-			else
-			{
-				$_SESSION['error'] = "Email or Username not available";
-				$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
-				header("Location: ".PROJECT."error.php");
-				exit();
-			}
-			$DB = NULL;
-		}
-		catch (Exception $e)
+		$sql = "SELECT login FROM db_tbouder.users WHERE login IN ('$user') OR email IN ('$email');";
+		$count = ft_exec_sql("rowCount", $sql);
+		if ($count === 0)
 		{
-			echo $e->getMessage();
-			die();
+			$hash_passwd = ft_encrypt_passwd($user, $passwd);
+			$user_uniqueid = uniqid();
+			$sql = "INSERT INTO db_tbouder.users (login, passwd, email, unique_id) value ('$user', '$hash_passwd', '$email', '$user_uniqueid');";
+			ft_exec_sql(FALSE, $sql);
+			$_SESSION["loggued_on_user"] = $user;
+			$_SESSION["user_level"] = 0;
+			$_SESSION["user_activ"] = 0;
+
+			$sujet = "Welcome to Camagru";
+			$message = "Welcome to the awesome world of Camagru !\r\n\r\n";
+			$message .= "Please click here to confirm your account : \r\n";
+			$message .= "http://localhost:8080/camagru/php_scripts/sc_mail_confirm_account.php?id=$user_uniqueid";
+			$header = "From: \"Camagru\"<tbouder.camagru@student.42.fr>".$endl;
+			mail($email, $sujet, $message, $header);
+			header("Location: ".PROJECT);
+		}
+		else
+		{
+			$_SESSION['error'] = "Email or Username not available";
+			$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
+			header("Location: ".PROJECT."error.php");
+			exit();
 		}
 	}
 	else

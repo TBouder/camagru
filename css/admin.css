@@ -6,15 +6,20 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 20:15:09 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/15 20:19:59 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 23:26:18 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+.adm_container
+{
+	margin: auto;
+	margin-top: 2vh;
+	text-align: center;
+}
 .adm_button
 {
+	margin: 0 1vw;
 	display: inline-block;
-	margin: auto;
-	margin-top: 1vh;
 	border: 2px solid #FFFFFF;
 	border-radius: 10px;
 	padding: 10px 20px;

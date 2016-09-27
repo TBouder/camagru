@@ -2,16 +2,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sc_check_infos.php                                 :+:      :+:    :+:   */
+/*   sc_tools.php                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 16:20:13 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 19:56:03 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 23:57:38 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 	session_start();
+
+	function ft_exec_sql($f, $sql)
+	{
+		include (CONFIG_DIR."database.php");
+
+		try
+		{
+			$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+			$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$request = $DB->prepare($sql);
+			$request->execute();
+			$requested = $f == FALSE ? FALSE : $request->$f();
+			$request->closeCursor();
+			$request = NULL;
+			return ($requested);
+		}
+		catch (Exception $e)
+		{
+			echo $e->getMessage();
+			die();
+		}
+	}
 
 	function ft_check_login($login)
 	{

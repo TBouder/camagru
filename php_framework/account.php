@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 19:47:44 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 00:21:25 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,12 @@
 
 	function ft_new_passwd_form()
 	{
-		include (CONFIG_DIR."database.php");
-		$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-		$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "SELECT * FROM db_tbouder.users WHERE unique_id IN ('".$_GET['id']."');";
-		$request = $DB->prepare($sql);
-		$request->execute();
-		$users = $request->fetchAll()[0];
-		$count = $request->rowCount();
-		$request->closeCursor();
-		$request = NULL;
+		$users = ft_exec_sql("fetchAll", $sql)[0];
+		$count = ft_exec_sql("rowCount", $sql);
 
-		echo '
-		<div class="login">
-			<h3>Reset password</h3><br /><br />';
+		echo "<div class='login'>";
+			echo "<h3>Reset password</h3><br /><br />";
 		if ($_SESSION["loggued_on_user"] == FALSE)
 		{
 			echo "<form method='POST' action='".PROJECT_SCRIPTS."sc_mail_edit_passwd.php'>";

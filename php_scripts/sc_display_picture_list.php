@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 18:25:12 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 19:57:17 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 00:02:25 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,28 @@
 	include_once("../includes.php");
 	include_all();
 
-	include (CONFIG_DIR."database.php");
 
 	$elem_per_page = 8;
-
-	$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-	$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-	$count = $DB->prepare("SELECT id FROM db_tbouder.pictures;");
-	$count->execute();
-	$nb_picture = $count->rowCount();
-	$count->closeCursor();
-	$count = NULL;
-
 	$sort = $_GET['sort'];
 	$current_page = $_GET['page'];
 	$page = isset($_GET['page']) ? $_GET['page'] : 0;
 	$offset = isset($_GET['page']) ? $elem_per_page * $page : 0;
 
+	$sql = "SELECT id FROM db_tbouder.pictures;";
+	$nb_picture = ft_exec_sql("rowCount", $sql);
+
 	$left_rec = $nb_picture - ($page * $elem_per_page);
 
 	if ($sort == "date")
-		$picture_db = $DB->prepare("SELECT * FROM db_tbouder.pictures ORDER BY date DESC, nb_like DESC LIMIT ".$elem_per_page." OFFSET ".$offset.";");
+		$sql = "SELECT * FROM db_tbouder.pictures ORDER BY date DESC, nb_like DESC LIMIT ".$elem_per_page." OFFSET ".$offset.";";
 	else if ($sort == "like")
-		$picture_db = $DB->prepare("SELECT * FROM db_tbouder.pictures ORDER BY nb_like DESC, date DESC LIMIT ".$elem_per_page." OFFSET ".$offset.";");
+		$sql = "SELECT * FROM db_tbouder.pictures ORDER BY nb_like DESC, date DESC LIMIT ".$elem_per_page." OFFSET ".$offset.";";
 	else if ($sort == "dislike")
-		$picture_db = $DB->prepare("SELECT * FROM db_tbouder.pictures ORDER BY nb_like ASC, date DESC LIMIT ".$elem_per_page." OFFSET ".$offset.";");
+		$sql = "SELECT * FROM db_tbouder.pictures ORDER BY nb_like ASC, date DESC LIMIT ".$elem_per_page." OFFSET ".$offset.";";
 	else if ($sort == "author")
-		$picture_db = $DB->prepare("SELECT * FROM db_tbouder.pictures ORDER BY owner DESC, date DESC LIMIT ".$elem_per_page." OFFSET ".$offset.";");
+		$sql = "SELECT * FROM db_tbouder.pictures ORDER BY owner DESC, date DESC LIMIT ".$elem_per_page." OFFSET ".$offset.";";
 
-	$picture_db->execute();
-	$all_pictures = $picture_db->fetchAll();
-	$picture_db->closeCursor();
-	$picture_db = NULL;
+	$all_pictures = ft_exec_sql("fetchAll", $sql);
 
 	echo '<div class="picture_list_container">';
 	foreach ($all_pictures as $elem)
@@ -92,5 +81,4 @@
 		echo '<a href='.$_PHP_SELF.'?page='.($page - 1).'&sort='.($sort).' class="gallery_previous">Prev</a>';
 		echo '<a href='.$_PHP_SELF.'?page='.($page + 1).'&sort='.($sort).' class="gallery_next">Next</a>';
 	}
-	$DB = NULL;
 ?>

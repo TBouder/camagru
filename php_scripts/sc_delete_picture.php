@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 12:17:13 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 17:22:07 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 23:58:17 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,15 @@
 	include_once("../includes.php");
 	include_all();
 
-	include (CONFIG_DIR."database.php");
-
 	if ($_POST['picture_name'])
 	{
-		try
-		{
-			$name = $_POST['picture_name'];
-			$user = $_SESSION['loggued_on_user'];
-			$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-			$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			/*DELETE IMAGE*/
-			$sql = "DELETE FROM db_tbouder.pictures WHERE name='".$name."' AND owner='".$user."'";
-			$request = $DB->prepare($sql);
-			$request->execute();
-			$request->closeCursor();
-			$request = NULL;
-			/*DELETE COMMENTS*/
-			$sql = "DELETE FROM db_tbouder.comments WHERE image_name='".$name."' AND owner='".$user."'";
-			$request = $DB->prepare($sql);
-			$request->execute();
-			$request->closeCursor();
-			$request = NULL;
-
-			$DB = NULL;
-		}
-		catch (Exception $e)
-		{
-			echo $e->getMessage();
-			die();
-		}
+		$name = $_POST['picture_name'];
+		$user = $_SESSION['loggued_on_user'];
+		/*DELETE IMAGE*/
+		$sql = "DELETE FROM db_tbouder.pictures WHERE name='".$name."' AND owner='".$user."';";
+		ft_exec_sql(FALSE, $sql);
+		/*DELETE COMMENTS*/
+		$sql = "DELETE FROM db_tbouder.comments WHERE image_name='".$name."' AND owner='".$user."';";
+		ft_exec_sql(FALSE, $sql);
 	}
 ?>
