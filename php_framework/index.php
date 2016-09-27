@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 15:10:53 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 19:22:22 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 
 	function ft_index_webcam()
 	{
-		echo '
-		<div class="webcam_container">
-			<video id="video"></video>
-			<canvas id="video_face"></canvas>
-			<div class="selectable_png">';
-			$user_dir = PROJECT."png/";
-			$scan_dir = scandir(ROOT_DIR."png/");
+		$user_dir = PROJECT."png/";
+		$scan_dir = scandir(ROOT_DIR."png/");
 
+		echo "<div class='webcam_container'>";
+			echo "<video id='video'></video>";
+			echo "<canvas id='video_face'></canvas>";
+			echo "<div class='selectable_png'>";
 			foreach ($scan_dir as $name)
 			{
 				if ($name === "." || $name === "..")
@@ -48,29 +47,15 @@
 			echo "</canvas>";
 		echo "</div>";
 	}
+
 	function ft_index_split()
 	{
-		if ($_SESSION["user_activ"] == 0)
-		{
-			echo '
-			<div class="split_container_padding">
-				<div class="split_content"></div>
-				<a href="#goto_gallery">
-					<span class="split_text" id="goto_gallery">Come and see our <span class="hold_eye">amazing</span> gallery !</span>
-				</a>
-				<div class="split_content"></div>
-			</div>';
-		}
-		else
-		{
-			echo '
-			<div class="split_container">
-				<div class="split_content"></div>
-				<a href="#goto_gallery">
-					<span class="split_text" id="goto_gallery">Come and see our <span class="hold_eye">amazing</span> gallery !</span>
-				</a>
-				<div class="split_content"></div>
-			</div>';
-		}
+		echo $_SESSION["user_activ"] == 0 ? "<div class='split_container_padding'>" : "<div class='split_container'>";
+			echo "<div class='split_content'></div>";
+			echo "<a href='#goto_gallery'>";
+				echo "<span class='split_text' id='goto_gallery'>Come and see our <span class='hold_eye'>amazing</span> gallery !</span>";
+			echo "</a>";
+			echo "<div class='split_content'></div>";
+		echo "</div>";
 	}
 ?>

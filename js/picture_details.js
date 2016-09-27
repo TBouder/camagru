@@ -29,9 +29,9 @@ function ajax_like(image_name, callback, like, name)
 {
 	var request = new XMLHttpRequest;
 	if (like == 1)
-		request.open('POST', 'php_scripts/sc_like_picture.php', true);
+		request.open('POST', 'php_scripts/sc_like_plus_picture.php', true);
 	else
-		request.open('POST', 'php_scripts/sc_dislike_picture.php', true);
+		request.open('POST', 'php_scripts/sc_like_minus_picture.php', true);
 	request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 	request.send("image_name=" + image_name);
 	request.onload = function()

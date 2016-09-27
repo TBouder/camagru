@@ -2,12 +2,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sc_login.php                                       :+:      :+:    :+:   */
+/*   sc_confirm_account.php                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/18 11:56:34 by tbouder          ###   ########.fr       */
+/*   Created: 2016/09/21 00:28:19 by tbouder           #+#    #+#             */
+/*   Updated: 2016/09/27 19:48:26 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,35 @@
 	include_all();
 
 	include (CONFIG_DIR."database.php");
-	include (SCRIPTS_DIR."sc_encrypt.php");
 
-	if ($_POST['submit'] == "Submit" && $_POST['user'] && $_POST['passwd'])
+	if ($_GET['id'])
 	{
-		$user = $_POST['user'];
-		$passwd = $_POST['passwd'];
 		try
 		{
+			$id = $_GET['id'];
 			$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 			$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-			$hash_passwd = ft_encrypt_passwd($user, $passwd);
-			$request = $DB->prepare("SELECT * FROM db_tbouder.users WHERE passwd IN ('$hash_passwd');");
+			$sql = "SELECT login FROM db_tbouder.users WHERE unique_id IN ('".$id."');";
+			$request = $DB->prepare($sql);
 			$request->execute();
-			$users = $request->fetchAll();
 			$count = $request->rowCount();
+			$users = $request->fetchAll();
 			$request->closeCursor();
 			$request = NULL;
 			if ($count === 1)
 			{
-				$_SESSION["loggued_on_user"] = $users[0]['login'];
-				$_SESSION["user_level"] = $users[0]['user_level'];
-				$_SESSION["user_activ"] = $users[0]['activ'];
+				$user = $users[0]['login'];
+				$DB->exec("UPDATE db_tbouder.users SET activ=1 WHERE unique_id='".$id."';");
+				$DB->exec("UPDATE db_tbouder.users SET user_level=1 WHERE unique_id='".$id."';");
+				$_SESSION["loggued_on_user"] = $user;
+				$_SESSION["user_level"] = 1;
+				$_SESSION["user_activ"] = 1;
 				header("Location: ".PROJECT);
 			}
 			else
 			{
-				$_SESSION['error'] = "Wrong Password/Username";
-				$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
+				$_SESSION['error'] = "Bad request";
+				$_SESSION["error_redirect"] = PROJECT;
 				header("Location: ".PROJECT."error.php");
 				exit();
 			}
@@ -55,12 +55,5 @@
 			echo $e->getMessage();
 			die();
 		}
-	}
-	else
-	{
-		$_SESSION['error'] = "Missing datas";
-		$_SESSION["error_redirect"] = $_SERVER['HTTP_REFERER'];
-		header("Location: ".PROJECT."error.php");
-		exit();
 	}
 ?>

@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 19:50:11 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 15:34:44 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 18:45:22 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@
 		<?php ft_comment() ?>
 		<?php ft_footer() ?>
 	</body>
-	<script src="picture_details.js"></script>
+	<script src="js/picture_details.js"></script>
 </html>

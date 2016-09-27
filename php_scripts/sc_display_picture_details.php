@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 18:25:12 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 19:08:13 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 19:57:10 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 	include_once("../includes.php");
 	include_all();
 
-	include (CONFIG_DIR."/database.php");
+	include (CONFIG_DIR."database.php");
+	
 	if ($_GET['name'])
 	{
 		try

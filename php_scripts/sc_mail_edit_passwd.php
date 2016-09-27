@@ -2,12 +2,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sc_edit_account.php                                :+:      :+:    :+:   */
+/*   sc_mail_edit_passwd.php                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 13:57:23 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 19:57:37 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 	include_all();
 
 	include (CONFIG_DIR."database.php");
-	include (SCRIPTS_DIR."sc_encrypt.php");
-	include (SCRIPTS_DIR."sc_check_infos.php");
+	include (SCRIPTS_DIR."sc_tools.php");
 
 	if ($_POST['submit'] == "Submit" && $_POST['user'] && $_POST['email'] && $_POST['passwd'])
 	{

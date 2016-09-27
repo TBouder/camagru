@@ -16,7 +16,7 @@
 	include_all();
 
 	include (CONFIG_DIR."database.php");
-	include (SCRIPTS_DIR."sc_encrypt.php");
+	include (SCRIPTS_DIR."sc_tools.php");
 	try
 	{
 		$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);

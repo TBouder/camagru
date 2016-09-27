@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 14:28:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 14:54:50 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 18:51:14 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,32 +28,32 @@
 	navigator.getMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia
 		|| navigator.mediaDevices.getUserMedia || navigator.msGetUserMedia);
 
-if (typeof InstallTrigger !== 'undefined')
-{
-	var p = navigator.mediaDevices.getUserMedia({ audio: false, video: true });
-	p.then(function(stream)
+	if (typeof InstallTrigger !== 'undefined')
 	{
-		video.src = window.URL.createObjectURL(stream);
-		video.onloadedmetadata = function(e)
+		var p = navigator.mediaDevices.getUserMedia({ audio: false, video: true });
+		p.then(function(stream)
 		{
-			video.play();
-		};
-	});
-	p.catch(function(err) { console.log(err.name); }); // always check for errors at the end.
-}
-else
-{
-	if (navigator.getMedia)
-	{
-		navigator.getMedia( { video: true, audio: false },
-	    function(stream)
-		{
-	        video.src = window.URL.createObjectURL(stream);
-			video.play();
-	    },
-		function(err) { console.log("The following error occured: " + err); });
+			video.src = window.URL.createObjectURL(stream);
+			video.onloadedmetadata = function(e)
+			{
+				video.play();
+			};
+		});
+		p.catch(function(err) { console.log(err.name); }); // always check for errors at the end.
 	}
-}
+	else
+	{
+		if (navigator.getMedia)
+		{
+			navigator.getMedia( { video: true, audio: false },
+		    function(stream)
+			{
+		        video.src = window.URL.createObjectURL(stream);
+				video.play();
+		    },
+			function(err) { console.log("The following error occured: " + err); });
+		}
+	}
 
 /*******************************************************************************
 ** Ajax functions
@@ -155,7 +155,7 @@ else
 	}, false);
 
 /*******************************************************************************
-** Change filter
+** Change filter + Like and Dislike
 *******************************************************************************/
 	function png_select(elem, name)
 	{
@@ -181,4 +181,55 @@ else
 	function ft_dislike_index(name)
 	{
 		ajax_like(name, ajax2, -1);
+	}
+
+/*******************************************************************************
+** Image upload and preview
+*******************************************************************************/
+	function ft_send_file()
+	{
+		var preview = document.createElement("img");
+		var file    = document.querySelector('input[type=file]').files[0];
+		var reader  = new FileReader();
+
+		if (document.querySelector('#frame').src)
+		{
+			reader.addEventListener("load", function ()
+			{
+				preview.src = reader.result;
+				var ctx_taken_picture = document.querySelector('#taken_picture').getContext('2d');
+				var ctx_png_picture = document.querySelector('#png_picture').getContext('2d');
+				ctx_taken_picture.drawImage(preview, 0, 0, width, height);
+				ctx_png_picture.drawImage(document.querySelector('#frame'), 0, 0);
+				var output1 = taken_picture.toDataURL().replace(/^data:image\/(png|jpg);base64,/, "");
+				var output2 = png_picture.toDataURL().replace(/^data:image\/(png|jpg);base64,/, "");
+				ajax(output1, output2, ajax2);
+				ctx_taken_picture.clearRect(0, 0, width, height);
+				ctx_png_picture.clearRect(0, 0, width, height);
+			}, false);
+			if (file)
+				reader.readAsDataURL(file);
+		}
+		else
+			alert("Please select a filter");
+		return false;
+	}
+	function ft_preview_file()
+	{
+		var preview = document.createElement("img");
+		var file    = document.querySelector('input[type=file]').files[0];
+		var reader  = new FileReader();
+
+		reader.addEventListener("load", function ()
+		{
+			preview.src = reader.result;
+			var container = document.querySelector('#uploaded_picture');
+			var img = document.querySelector('#frame');
+			var ctx2 = document.querySelector('#video_face').getContext('2d');
+			ctx2.drawImage(preview, 0, 0, width, height);
+			ctx2.drawImage(img, 0, 0);
+			container.appendChild(preview);
+		}, false);
+		if (file)
+			reader.readAsDataURL(file);
 	}

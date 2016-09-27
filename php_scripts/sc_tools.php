@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/17 16:20:13 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/21 10:45:27 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 19:56:03 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,12 @@
 		return (TRUE);
 	}
 
+	function ft_encrypt_passwd($login, $passwd)
+	{
+		$log_infos = "_4@2koa!".$login.$passwd."+la";
+		$iterations = 1000;
+		$password = hash_pbkdf2("gost", $log_infos, 10, $iterations);
+		$password .= hash("whirlpool", $password);
+		return ($password);
+	}
 ?>

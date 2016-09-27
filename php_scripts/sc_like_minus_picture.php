@@ -2,12 +2,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sc_dislike_picture.php                             :+:      :+:    :+:   */
+/*   sc_like_minus_picture.php                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 11:12:16 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 12:49:23 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 19:57:28 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 	include_once("../includes.php");
 	include_all();
 
-	include (CONFIG_DIR."/database.php");
-	if ($_SESSION["user_activ"] == 0)	return;
+	include (CONFIG_DIR."database.php");
 	
+	if ($_SESSION["user_activ"] == 0)	return;
+
 	$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 	$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$name = $_POST['image_name'];

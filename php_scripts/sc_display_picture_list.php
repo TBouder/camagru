@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 18:25:12 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 15:37:11 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 19:57:17 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 	include_once("../includes.php");
 	include_all();
 
-	include (CONFIG_DIR."/database.php");
+	include (CONFIG_DIR."database.php");
 
 	$elem_per_page = 8;
 

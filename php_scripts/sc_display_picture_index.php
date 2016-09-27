@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 11:12:16 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 19:43:45 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 19:57:08 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 	include_once("../includes.php");
 	include_all();
 
-	include (CONFIG_DIR."/database.php");
+	include (CONFIG_DIR."database.php");
 
 	$DB = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
 	$DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

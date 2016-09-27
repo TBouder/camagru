@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/26 14:53:24 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/27 19:47:44 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,73 +15,64 @@
 
 	function ft_create_account_form()
 	{
-		echo '
-		<div class="create_account">
-			<h3>Create Account</h3><br /><br />';
+		echo "<div class='create_account'>";
+			echo "<h3>Create Account</h3><br /><br />";
 		if ($_SESSION["loggued_on_user"] == FALSE)
 		{
-			echo '
-			<form method="POST" action="'.PROJECT_SCRIPTS.'sc_create_account.php">
-				Username :<br /><br /><input type="text" name="user" value="" /><br /><br />
-				Email :<br /><br /><input type="text" name="email" value="" /><br /><br />
-				Password :<br /><br /><input type="password" name="passwd" value="" /><br /><br />
-			   <input type="submit" name="submit" value="Submit" />
-			</form>';
+			echo "<form method='POST' action='".PROJECT_SCRIPTS."sc_form_create_account.php'>";
+				echo "Username :<br /><br /><input type='text' name='user'/><br /><br />";
+				echo "Email :<br /><br /><input type='text' name='email'/><br /><br />";
+				echo "Password :<br /><br /><input type='password' name='passwd'/><br /><br />";
+				echo "<input type='submit' name='submit' value='Submit' />";
+			echo "</form>";
 		}
 		else
 		{
-			echo '
-			You are already logged<br /><br />
-			<a href="'.PROJECT.'" class="redirect">Go back home</a>';
+			echo "You are already logged<br /><br />";
+			echo "<a href='".PROJECT."' class='redirect'>Go back home</a>";
 		}
-		echo '</div>';
+		echo "</div>";
 	}
 
 	function ft_login_form()
 	{
-		echo '
-		<div class="login">
-			<h3>Login</h3><br /><br />';
-		if ($_SESSION["loggued_on_user"] == FALSE)
+		echo "<div class='login'>";
+			echo "<h3>Login</h3><br /><br />";
+		if ($_SESSION['loggued_on_user'] == FALSE)
 		{
-			echo '
-			<form method="POST" action="'.PROJECT_SCRIPTS.'sc_login.php">
-				Username :<br /><br /><input type="text" name="user" value=""/><br /><br />
-				Password :<br /><br /><input type="password" name="passwd" value=""/><br /><br />
-			   <input type="submit" name="submit" value="Submit" class="login_button" />
-			</form>
-			<div class="reset_passwd"><a href="'.PROJECT.'reset_passwd.php">Reset password</a></div>';
+			echo "<form method='POST' action='".PROJECT_SCRIPTS."sc_form_login.php'>";
+				echo "Username :<br /><br /><input type='text' name='user'/><br /><br />";
+				echo "Password :<br /><br /><input type='password' name='passwd'/><br /><br />";
+				echo "<input type='submit' name='submit' value='Submit' class='login_button' />";
+			echo "</form>";
+			echo "<div class='reset_passwd'><a href='".PROJECT."reset_passwd.php'>Reset password</a></div>";
 		}
 		else
 		{
-			echo '
-			You are already logged<br /><br />
-			<a href="index.php" class="redirect">Go back home</a>';
+			echo "You are already logged<br /><br />";
+			echo "<a href='".PROJECT."' class='redirect'>Go back home</a>";
 		}
-		echo '</div>';
+		echo "</div>";
 	}
 
 	function ft_reset_form()
 	{
-		echo '
-		<div class="login">
-			<h3>Reset password</h3><br /><br />';
-		if ($_SESSION["loggued_on_user"] == FALSE)
+		echo "<div class='login'>";
+			echo "<h3>Reset password</h3><br /><br />";
+		if ($_SESSION['loggued_on_user'] == FALSE)
 		{
-			echo '
-			<form method="POST" action="'.PROJECT_SCRIPTS.'sc_reset_passwd.php">
-				Username :<br /><br /><input type="text" name="user" value=""/><br /><br />
-				Email :<br /><br /><input type="text" name="email" value="" /><br /><br />
-			   <input type="submit" name="submit" value="Submit"/>
-			</form>';
+			echo "<form method='POST' action='".PROJECT_SCRIPTS."sc_form_reset_passwd.php'>";
+				echo "Username :<br /><br /><input type='text' name='user'/><br /><br />";
+				echo "Email :<br /><br /><input type='text' name='email'/><br /><br />";
+				echo "<input type='submit' name='submit' value='Submit'/>";
+			echo "</form>";
 		}
 		else
 		{
-			echo '
-			You are already logged<br /><br />
-			<a href="index.php" class="redirect">Go back home</a>';
+			echo "You are already logged<br /><br />";
+			echo "<a href='".PROJECT."' class='redirect'>Go back home</a>";
 		}
-		echo '</div>';
+		echo "</div>";
 	}
 
 	function ft_new_passwd_form()
@@ -102,7 +93,7 @@
 			<h3>Reset password</h3><br /><br />';
 		if ($_SESSION["loggued_on_user"] == FALSE)
 		{
-			echo "<form method='POST' action='".PROJECT_SCRIPTS."sc_edit_account.php'>";
+			echo "<form method='POST' action='".PROJECT_SCRIPTS."sc_mail_edit_passwd.php'>";
 				echo "Username :<br /><br /><input type='text' name='user' value='".$users['login']."' readonly/><br /><br />";
 				echo "Email :<br /><br /><input type='text' name='email' value='".$users['email']."' readonly/><br /><br />";
 				echo "Password :<br /><br /><input type='password' name='passwd' value='' /><br /><br />";
