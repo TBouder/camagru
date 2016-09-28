@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 14:28:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/28 13:44:18 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 14:43:58 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,8 @@
 				ctx.drawImage(img, 0, 0);
 			}
 		}
+		else
+			ft_preview_file();
 	}, false);
 
 	startbutton.addEventListener('click', function(ev)
@@ -241,21 +243,7 @@
 			reader.readAsDataURL(file);
 	}
 
-	document.querySelector('#uploaded_picture').addEventListener('onchange', function(ev)
+	function ft_cancel_upload()
 	{
-		// var img = document.querySelector('#frame');
-		// var ctx = document.querySelector('#video_face').getContext('2d');
-		// ctx.drawImage(img, 0, 0);
-		// container.appendChild(preview);
-
-			// var ctx = canvas2.getContext('2d');
-			// // ctx.drawImage(video, 0, 0, width, height);
-			// if (document.querySelector('#frame').src !== "")
-			// {
-			// 	var img = document.querySelector('#frame');
-			// 	ctx.drawImage(img, 0, 0);
-			// }
-			canvas2.getContext('2d').clearRect(0, 0, width, height);
-
-
-	}, false);
+		document.querySelector('#uploaded_picture').innerHTML = "";
+	}

@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/28 13:26:04 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 15:16:42 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 						echo "<input type='file' name='image' min='1' id='import_image'>";
 						echo "<input type='submit' name='submit' value='Go !' id='import_button'>";
 					echo "</form>";
+					echo "<button id='cancel_submit' onclick='ft_cancel_upload()'>Cancel preview</button>";
 				echo "</span>";
 			echo "</div>";
 			echo "<canvas id='canvas'>";
