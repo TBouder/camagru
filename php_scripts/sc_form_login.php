@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/28 00:07:57 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 13:00:48 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 	if ($_POST['submit'] == "Submit" && $_POST['user'] && $_POST['passwd'])
 	{
 		$user = strtolower($_POST['user']);
+		$user = htmlspecialchars($user);
 		$passwd = $_POST['passwd'];
 
 		$hash_passwd = ft_encrypt_passwd($user, $passwd);

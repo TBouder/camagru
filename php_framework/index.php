@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 09:10:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 19:22:22 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 13:26:04 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 			echo "<div class='button_countainer'><button id='startbutton'>Smile !</button></div>";
 			echo "<div class='button_countainer'>";
 				echo "<span id='alternativbutton'>Or upload it !";
-					echo "<form method='POST' enctype='multipart/form-data' id='import' onsubmit='ft_send_file()' onchange='ft_preview_file()'>";
+					echo "<form method='POST' enctype='multipart/form-data' id='import' onsubmit='ft_send_file(); return false' onchange='ft_preview_file()'>";
 						echo "<input type='file' name='image' min='1' id='import_image'>";
 						echo "<input type='submit' name='submit' value='Go !' id='import_button'>";
 					echo "</form>";

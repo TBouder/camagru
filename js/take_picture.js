@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/19 14:28:31 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 18:51:14 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 13:44:18 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,12 +133,12 @@
 	{
 		if (document.querySelector('#uploaded_picture').innerHTML === "")
 		{
-			var ctx2 = canvas2.getContext('2d');
-			ctx2.drawImage(video, 0, 0, width, height);
+			var ctx = canvas2.getContext('2d');
+			ctx.drawImage(video, 0, 0, width, height);
 			if (document.querySelector('#frame').src !== "")
 			{
 				var img = document.querySelector('#frame');
-				ctx2.drawImage(img, 0, 0);
+				ctx.drawImage(img, 0, 0);
 			}
 		}
 	}, false);
@@ -192,6 +192,9 @@
 		var file    = document.querySelector('input[type=file]').files[0];
 		var reader  = new FileReader();
 
+		if (!file.type.match('image.*'))
+			return false;
+
 		if (document.querySelector('#frame').src)
 		{
 			reader.addEventListener("load", function ()
@@ -220,16 +223,39 @@
 		var file    = document.querySelector('input[type=file]').files[0];
 		var reader  = new FileReader();
 
+		if (!file.type.match('image.*'))
+			return false;
+
 		reader.addEventListener("load", function ()
 		{
+			canvas2.getContext('2d').clearRect(0, 0, width, height);
 			preview.src = reader.result;
 			var container = document.querySelector('#uploaded_picture');
 			var img = document.querySelector('#frame');
-			var ctx2 = document.querySelector('#video_face').getContext('2d');
-			ctx2.drawImage(preview, 0, 0, width, height);
-			ctx2.drawImage(img, 0, 0);
+			var ctx = canvas2.getContext('2d');
+			ctx.drawImage(preview, 0, 0, width, height);
+			ctx.drawImage(img, 0, 0);
 			container.appendChild(preview);
 		}, false);
 		if (file)
 			reader.readAsDataURL(file);
 	}
+
+	document.querySelector('#uploaded_picture').addEventListener('onchange', function(ev)
+	{
+		// var img = document.querySelector('#frame');
+		// var ctx = document.querySelector('#video_face').getContext('2d');
+		// ctx.drawImage(img, 0, 0);
+		// container.appendChild(preview);
+
+			// var ctx = canvas2.getContext('2d');
+			// // ctx.drawImage(video, 0, 0, width, height);
+			// if (document.querySelector('#frame').src !== "")
+			// {
+			// 	var img = document.querySelector('#frame');
+			// 	ctx.drawImage(img, 0, 0);
+			// }
+			canvas2.getContext('2d').clearRect(0, 0, width, height);
+
+
+	}, false);

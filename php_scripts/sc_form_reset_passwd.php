@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 16:47:25 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/28 00:09:17 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 13:03:37 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 
 	if ($_POST['submit'] == "Submit" && $_POST['user'] && $_POST['email'])
 	{
-		$user = $_POST['user'];
-		$email = $_POST['email'];
+		$user = strtolower($_POST['user']);
+		$user = htmlspecialchars($user);
+		$email = strtolower($_POST['email']);
+		$email = htmlspecialchars($email);
 
 		/***********************************************************************
 		** USER CHECKS

@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 11:54:14 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/28 12:43:19 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 13:12:12 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 
 	$data = $_POST['data'];
 	$change = $_POST['change'];
-	$login = $_POST['login'];
+	$login = strtolower($_POST['login']);
+	$login = htmlspecialchars($login);
 
 	if ($data == "user_level")
 	{
@@ -39,7 +40,7 @@
 	{
 		$sql = "SELECT * FROM db_tbouder.users where login='$login';";
 		$activ = ft_exec_sql("fetchAll", $sql)[0]['activ'];
-		
+
 		if ($change == "minus" && $activ == 1)
 			$sql = "UPDATE db_tbouder.users SET activ=activ-1 WHERE login='$login';";
 		else if ($change == "plus" && $activ == 0)

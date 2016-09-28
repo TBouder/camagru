@@ -7,7 +7,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 11:54:14 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/28 12:13:12 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 13:12:28 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 	if ($_SESSION["user_level"] != 2)
 		header("Location: ".PROJECT);
 
-	$login = $_POST['login'];
+	$login = strtolower($_POST['login']);
+	$login = htmlspecialchars($login);
 
 	$sql = "DELETE FROM db_tbouder.users WHERE login='".$login."';";
 	ft_exec_sql(FALSE, $sql);
