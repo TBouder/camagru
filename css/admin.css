@@ -6,7 +6,7 @@
 /*   By: tbouder <tbouder@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 20:15:09 by tbouder           #+#    #+#             */
-/*   Updated: 2016/09/27 23:26:18 by tbouder          ###   ########.fr       */
+/*   Updated: 2016/09/28 12:52:02 by tbouder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 	margin: auto;
 	margin-top: 2vh;
 	text-align: center;
+	margin-bottom: 2vh;
 }
 .adm_button
 {
@@ -38,4 +39,52 @@
 {
 	pointer-events: none;
 	cursor: default;
+}
+
+/******************************************************************************/
+
+.adm_users_table
+{
+	width: 80%;
+	margin: auto;
+	border: 2px solid #FFFFFF;
+	border-collapse: collapse;
+	background: #7F7F7F;
+	line-height:3vmin;
+}
+.adm_users_table tr,
+.adm_users_table td,
+.adm_users_table th
+{
+	border: solid 1px #FFFFFF;
+	padding: 1.5vmin;
+}
+
+.adm_picture_container
+{
+	width: 5%;
+	text-align: center;
+}
+.adm_picture_remove
+{
+	width: 3vmin;
+	cursor: pointer;
+}
+
+.adm_plusminus_container
+{
+	width: 20%;
+	text-align: center;
+}
+.adm_picture_plus
+{
+	width: 3vmin;
+	cursor: pointer;
+	float: right;
+}
+.adm_picture_minus
+{
+	width: 3vmin;
+	cursor: pointer;
+	float: left;
 }
